@@ -10,14 +10,27 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
   var window: UIWindow?
-
-
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+  private var appCoordinator: AppCoordinating?
+  
+  //MARK: - UIApplicationDelegate
+  
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    launchApplication()
     return true
   }
-
-
+  
+  //MARK: - Launch
+  
+  private func launchApplication() {
+    let window = UIWindow(frame: UIScreen.main.bounds)
+    let appCoordinator = AppCoordinator(window: window)
+    appCoordinator.start()
+    
+    self.window = window
+    self.appCoordinator = appCoordinator
+  }
+  
 }

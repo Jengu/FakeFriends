@@ -6,6 +6,7 @@ target 'RandomApp' do
   use_frameworks!
 
   # Pods for RandomApp
+  pod 'SnapKit', '~> 3.0'
 
   target 'RandomAppTests' do
     inherit! :search_paths
