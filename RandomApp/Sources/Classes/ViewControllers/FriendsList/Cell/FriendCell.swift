@@ -8,8 +8,19 @@
 
 import UIKit
 
-class FriendCell: UITableViewCell {
+class FriendCell: UITableViewCell, ViewModelUpdatable {
   
+  typealias ViewModel = FriendCellViewModel
   
+  //MARK: - Properties
+  
+  @IBOutlet weak var avatarImageView: AvatarImageView!
+  @IBOutlet weak var usernameLabel: UILabel!
+  
+  //MARK: - Update
+  
+  func update(with viewModel: FriendCellViewModel) {
+    usernameLabel.text = viewModel.username
+  }
   
 }

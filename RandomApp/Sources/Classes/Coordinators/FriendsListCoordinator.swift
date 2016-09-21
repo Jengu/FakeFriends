@@ -13,6 +13,7 @@ final class FriendsListCoordinator: BaseCoordinating {
   //MARK: - Properties
   
   let rootViewController: UIViewController
+  private let servicesFabric = ServicesFabric()
   
   //MARK: - Init
   
@@ -29,7 +30,7 @@ final class FriendsListCoordinator: BaseCoordinating {
   //MARK: - Private methods
   
   private func showFriendsListViewController() {
-    let viewModel = FriendsListDefaultViewModel()
+    let viewModel = FriendsListDefaultViewModel(apiProvider: ServicesFabric.apiProvider())
     let viewController = FriendsListViewController(viewModel: viewModel)
     guard let navigationController = rootViewController as? UINavigationController else {
       fatalError("Root view controller is not UINavigationController as expected")

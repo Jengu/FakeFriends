@@ -10,6 +10,9 @@ import Foundation
 
 protocol FriendCellViewModel {
   
+  var username: String? { get }
+  var avatarImageURLString: String? { get }
   
+  init(friend: Friend)
   
 }

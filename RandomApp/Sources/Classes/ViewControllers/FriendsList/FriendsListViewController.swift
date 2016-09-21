@@ -9,18 +9,16 @@
 import UIKit
 import SnapKit
 
-final class FriendsListViewController: UIViewController, ViewModellable {
+final class FriendsListViewController: UIViewController {
   
   //MARK: - Properties
 
-  typealias ViewModel = FriendsListViewModel
-  let viewModel: FriendsListViewModel
-  
+  fileprivate var viewModel: FriendsListViewModel!
   lazy private var tableView = UITableView()
   
   //MARK: - Init
   
-  init(viewModel: ViewModel) {
+  init(viewModel: FriendsListViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -38,7 +36,7 @@ final class FriendsListViewController: UIViewController, ViewModellable {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    viewModel.reloadData()
+    reloadData()
   }
   
   //MARK: - Configure
@@ -59,6 +57,9 @@ final class FriendsListViewController: UIViewController, ViewModellable {
     
     tableView.delegate = self
     tableView.dataSource = self
+    
+    tableView.estimatedRowHeight = 60
+    tableView.rowHeight = UITableViewAutomaticDimension
   }
   
   private func registerCells() {
@@ -66,6 +67,36 @@ final class FriendsListViewController: UIViewController, ViewModellable {
   }
   
   private func configureViewModel() {
+    viewModel.willUpdate = { [weak self] in
+      self?.viewModelWillUpdate()
+    }
+    
+    viewModel.didUpdate = { [weak self] in
+      self?.viewModelDidUpdate()
+    }
+    
+    viewModel.didFail = { [weak self] (error) in
+      self?.viewModelDidFail(error: error)
+    }
+  }
+  
+  //MARK: - Reload
+  
+  private func reloadData() {
+    viewModel.reloadData()
+  }
+  
+  //MARK: - Update
+  
+  private func viewModelWillUpdate() {
+    
+  }
+  
+  private func viewModelDidUpdate() {
+    tableView.reloadData()
+  }
+  
+  private func viewModelDidFail(error: Error) {
     
   }
   
@@ -76,9 +107,12 @@ final class FriendsListViewController: UIViewController, ViewModellable {
 extension FriendsListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    if let cell = cell as? FriendCell {
-      cell.textLabel?.text = "kek #\(indexPath.row)"
+    guard let cell = cell as? FriendCell else {
+      fatalError("Cell is not FriendCell as expected")
     }
+    
+    let cellViewModel = viewModel.cellViewModel(for: indexPath)
+    cell.update(with: cellViewModel)
   }
   
 }

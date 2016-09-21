@@ -12,4 +12,6 @@ protocol FriendsListSectionViewModel {
  
   var cellViewModels: [FriendCellViewModel] { get }
   
+  init(friends: [Friend])
+  
 }
