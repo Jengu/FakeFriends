@@ -15,12 +15,13 @@
 		FF2B27AA1D91988B00C552F3 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27A91D91988B00C552F3 /* UITableViewCell+Extensions.swift */; };
 		FF2B27B01D92793B00C552F3 /* FriendCellDefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27AF1D92793B00C552F3 /* FriendCellDefaultViewModel.swift */; };
 		FF2B27B21D92795800C552F3 /* FriendsListSectionDefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27B11D92795800C552F3 /* FriendsListSectionDefaultViewModel.swift */; };
-		FF2B27B41D927CA100C552F3 /* ViewModelUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27B31D927CA100C552F3 /* ViewModelUpdatable.swift */; };
 		FF2B27B81D927D9200C552F3 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2B27B61D927D9200C552F3 /* FriendCell.xib */; };
 		FF2B27BA1D927EC100C552F3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27B91D927EC100C552F3 /* Friend.swift */; };
 		FF2B27BE1D9284A100C552F3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27BD1D9284A100C552F3 /* Network.swift */; };
 		FF4DB64B1D8C0D3D00424759 /* RandomAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4DB64A1D8C0D3D00424759 /* RandomAppTests.swift */; };
 		FF4DB6841D8C0FF200424759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4DB6731D8C0FF200424759 /* Assets.xcassets */; };
+		FF7408631D93D0A400DD2E1E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7408621D93D0A400DD2E1E /* ImageCache.swift */; };
+		FF7408651D93D13F00DD2E1E /* ImageCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7408641D93D13F00DD2E1E /* ImageCacheProvider.swift */; };
 		FF784BF21D910EA800C90DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF784BE31D910EA800C90DA6 /* AppDelegate.swift */; };
 		FF784BF31D910EA800C90DA6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF784BE61D910EA800C90DA6 /* AppCoordinator.swift */; };
 		FF784BF51D910EA800C90DA6 /* FriendsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF784BE81D910EA800C90DA6 /* FriendsListCoordinator.swift */; };
@@ -38,6 +39,13 @@
 		FFF4A6D71D928DDF0036E6C2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4A6D61D928DDE0036E6C2 /* API.swift */; };
 		FFF4A6D91D928DEA0036E6C2 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4A6D81D928DEA0036E6C2 /* APIProvider.swift */; };
 		FFF4A6DD1D928FBE0036E6C2 /* RequestFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4A6DC1D928FBE0036E6C2 /* RequestFabric.swift */; };
+		FFF777AB1D95074B002EDDB4 /* UniqueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777AA1D95074B002EDDB4 /* UniqueCell.swift */; };
+		FFF777AD1D950F00002EDDB4 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777AC1D950F00002EDDB4 /* ImageProvider.swift */; };
+		FFF777AF1D952197002EDDB4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777AE1D952197002EDDB4 /* UIViewController+Extensions.swift */; };
+		FFF777B21D95A213002EDDB4 /* FriendDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777B11D95A213002EDDB4 /* FriendDetailsViewController.swift */; };
+		FFF777B41D95A6D2002EDDB4 /* FriendDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777B31D95A6D2002EDDB4 /* FriendDetailsViewModel.swift */; };
+		FFF777B61D95A6E5002EDDB4 /* FriendDetailsDefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777B51D95A6E5002EDDB4 /* FriendDetailsDefaultViewModel.swift */; };
+		FFF777B91D95A8D0002EDDB4 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF777B81D95A8D0002EDDB4 /* StringFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +71,6 @@
 		FF2B27A91D91988B00C552F3 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		FF2B27AF1D92793B00C552F3 /* FriendCellDefaultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCellDefaultViewModel.swift; sourceTree = "<group>"; };
 		FF2B27B11D92795800C552F3 /* FriendsListSectionDefaultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListSectionDefaultViewModel.swift; sourceTree = "<group>"; };
-		FF2B27B31D927CA100C552F3 /* ViewModelUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelUpdatable.swift; sourceTree = "<group>"; };
 		FF2B27B61D927D9200C552F3 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 		FF2B27B91D927EC100C552F3 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		FF2B27BD1D9284A100C552F3 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -73,6 +80,8 @@
 		FF4DB64C1D8C0D3D00424759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF4DB6731D8C0FF200424759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF4DB6831D8C0FF200424759 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF7408621D93D0A400DD2E1E /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		FF7408641D93D13F00DD2E1E /* ImageCacheProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheProvider.swift; sourceTree = "<group>"; };
 		FF784BE31D910EA800C90DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF784BE61D910EA800C90DA6 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FF784BE81D910EA800C90DA6 /* FriendsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListCoordinator.swift; sourceTree = "<group>"; };
@@ -90,6 +99,13 @@
 		FFF4A6D61D928DDE0036E6C2 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FFF4A6D81D928DEA0036E6C2 /* APIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		FFF4A6DC1D928FBE0036E6C2 /* RequestFabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFabric.swift; sourceTree = "<group>"; };
+		FFF777AA1D95074B002EDDB4 /* UniqueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniqueCell.swift; sourceTree = "<group>"; };
+		FFF777AC1D950F00002EDDB4 /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		FFF777AE1D952197002EDDB4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FFF777B11D95A213002EDDB4 /* FriendDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailsViewController.swift; sourceTree = "<group>"; };
+		FFF777B31D95A6D2002EDDB4 /* FriendDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailsViewModel.swift; sourceTree = "<group>"; };
+		FFF777B51D95A6E5002EDDB4 /* FriendDetailsDefaultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailsDefaultViewModel.swift; sourceTree = "<group>"; };
+		FFF777B81D95A8D0002EDDB4 /* StringFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +225,16 @@
 			path = "RandomApp/Supporting Files";
 			sourceTree = "<group>";
 		};
+		FF7408611D93D08C00DD2E1E /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				FF7408621D93D0A400DD2E1E /* ImageCache.swift */,
+				FF7408641D93D13F00DD2E1E /* ImageCacheProvider.swift */,
+				FFF777AC1D950F00002EDDB4 /* ImageProvider.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
 		FF784BE21D910EA800C90DA6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				FF2B27A91D91988B00C552F3 /* UITableViewCell+Extensions.swift */,
+				FFF777AE1D952197002EDDB4 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -261,6 +288,8 @@
 		FF784BEB1D910EA800C90DA6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FFF777B71D95A8B3002EDDB4 /* StringFormatter */,
+				FF7408611D93D08C00DD2E1E /* ImageCache */,
 				FF2B27BC1D92848100C552F3 /* API */,
 				FF2B27BB1D92847400C552F3 /* Network */,
 				FF8602281D92D8F60037E690 /* ServicesFabric.swift */,
@@ -278,6 +307,7 @@
 		FF784BED1D910EA800C90DA6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FFF777B01D95A1F4002EDDB4 /* FriendDetails */,
 				FF784C041D9193C900C90DA6 /* FriendsList */,
 			);
 			path = ViewControllers;
@@ -298,7 +328,7 @@
 				FF784BFC1D91252C00C90DA6 /* CoordinatorsProtocols.swift */,
 				FF2B27A51D91982800C552F3 /* CellRepresentable.swift */,
 				FF2B27A71D91986300C552F3 /* CellIdentifiable.swift */,
-				FF2B27B31D927CA100C552F3 /* ViewModelUpdatable.swift */,
+				FFF777AA1D95074B002EDDB4 /* UniqueCell.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -341,6 +371,24 @@
 				FF86022B1D92FC9A0037E690 /* AvatarImageView.swift */,
 			);
 			path = AvatarImageView;
+			sourceTree = "<group>";
+		};
+		FFF777B01D95A1F4002EDDB4 /* FriendDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FFF777B11D95A213002EDDB4 /* FriendDetailsViewController.swift */,
+				FFF777B31D95A6D2002EDDB4 /* FriendDetailsViewModel.swift */,
+				FFF777B51D95A6E5002EDDB4 /* FriendDetailsDefaultViewModel.swift */,
+			);
+			path = FriendDetails;
+			sourceTree = "<group>";
+		};
+		FFF777B71D95A8B3002EDDB4 /* StringFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				FFF777B81D95A8D0002EDDB4 /* StringFormatter.swift */,
+			);
+			path = StringFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,7 +612,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF4A6DD1D928FBE0036E6C2 /* RequestFabric.swift in Sources */,
+				FF7408651D93D13F00DD2E1E /* ImageCacheProvider.swift in Sources */,
 				FFF4A6D71D928DDF0036E6C2 /* API.swift in Sources */,
+				FFF777B21D95A213002EDDB4 /* FriendDetailsViewController.swift in Sources */,
 				FF2B27A81D91986300C552F3 /* CellIdentifiable.swift in Sources */,
 				FF2B27A41D91980000C552F3 /* FriendCell.swift in Sources */,
 				FF8602291D92D8F60037E690 /* ServicesFabric.swift in Sources */,
@@ -574,20 +624,26 @@
 				FF2B27B21D92795800C552F3 /* FriendsListSectionDefaultViewModel.swift in Sources */,
 				FF784BFD1D91252C00C90DA6 /* CoordinatorsProtocols.swift in Sources */,
 				FF2B27BA1D927EC100C552F3 /* Friend.swift in Sources */,
+				FFF777AD1D950F00002EDDB4 /* ImageProvider.swift in Sources */,
 				FF86022C1D92FC9A0037E690 /* AvatarImageView.swift in Sources */,
 				FF784BF31D910EA800C90DA6 /* AppCoordinator.swift in Sources */,
 				FF784BF51D910EA800C90DA6 /* FriendsListCoordinator.swift in Sources */,
+				FF7408631D93D0A400DD2E1E /* ImageCache.swift in Sources */,
 				FF2B27AA1D91988B00C552F3 /* UITableViewCell+Extensions.swift in Sources */,
 				FF2B27BE1D9284A100C552F3 /* Network.swift in Sources */,
 				FF2B27B01D92793B00C552F3 /* FriendCellDefaultViewModel.swift in Sources */,
+				FFF777B61D95A6E5002EDDB4 /* FriendDetailsDefaultViewModel.swift in Sources */,
 				FFF4A6D51D92887F0036E6C2 /* NetworkProvider.swift in Sources */,
 				FFF4A6D31D92875E0036E6C2 /* NetworkRequest.swift in Sources */,
 				FF784C171D91944600C90DA6 /* FriendCellViewModel.swift in Sources */,
 				FF784BF21D910EA800C90DA6 /* AppDelegate.swift in Sources */,
-				FF2B27B41D927CA100C552F3 /* ViewModelUpdatable.swift in Sources */,
 				FFF4A6D91D928DEA0036E6C2 /* APIProvider.swift in Sources */,
 				FF2B27A61D91982800C552F3 /* CellRepresentable.swift in Sources */,
+				FFF777AB1D95074B002EDDB4 /* UniqueCell.swift in Sources */,
+				FFF777B41D95A6D2002EDDB4 /* FriendDetailsViewModel.swift in Sources */,
 				FF784C181D91944600C90DA6 /* FriendsListDefaultViewModel.swift in Sources */,
+				FFF777B91D95A8D0002EDDB4 /* StringFormatter.swift in Sources */,
+				FFF777AF1D952197002EDDB4 /* UIViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

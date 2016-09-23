@@ -11,6 +11,7 @@ import Foundation
 class NetworkProvider: Network {
   
   //MARK: - Properties
+  
   private let session: URLSession
   private let mainDispatchQueue = DispatchQueue.main
   
@@ -23,15 +24,16 @@ class NetworkProvider: Network {
   //MARK: - Make request
   
   func make(request: NetworkRequest,
-            success: @escaping ([String : AnyObject]) -> Void,
-            failure: @escaping (Error) -> Void) -> URLSessionDataTask? {
+            success: (([String : AnyObject]) -> Void)?,
+            failure: ((Error) -> Void)?) {
     do {
       let request = try request.buildURLRequest()
+      print("Request: \(request.description)")
       let task = self.session.dataTask(with: request,
                                        completionHandler: { [weak self] (data, response, error) in
                                         guard let data = data else {
                                           self?.mainDispatchQueue.async {
-                                            failure(error ?? NetworkError.unknown)
+                                            failure?(error ?? NetworkError.unknown)
                                           }
                                           return
                                         }
@@ -39,54 +41,51 @@ class NetworkProvider: Network {
                                         guard let jsonOptional = try? JSONSerialization.jsonObject(with: data, options: []),
                                           let json = jsonOptional as? [String: AnyObject] else {
                                             self?.mainDispatchQueue.async {
-                                              failure(NetworkError.invalidResponse)
+                                              failure?(NetworkError.invalidResponse)
                                             }
                                             return
                                         }
                                         
                                         self?.mainDispatchQueue.async {
-                                          success(json)
+                                          print("Response: \(json.description)")
+                                          success?(json)
                                         }
       })
       
       task.resume()
-      return task
       
     } catch let error {
       mainDispatchQueue.async {
-        failure(error)
+        failure?(error)
       }
-      return nil
     }
   }
   
   func make(request: NetworkRequest,
-            success: @escaping (Data) -> Void,
-            failure: @escaping (Error) -> Void) -> URLSessionDataTask? {
+            success: ((Data) -> Void)?,
+            failure: ((Error) -> Void)?) {
     do {
       let request = try request.buildURLRequest()
       let task = self.session.dataTask(with: request,
                                        completionHandler: { [weak self] (data, response, error) in
                                         guard let data = data else {
                                           self?.mainDispatchQueue.async {
-                                            failure(error ?? NetworkError.unknown)
+                                            failure?(error ?? NetworkError.unknown)
                                           }
                                           return
                                         }
                                         
                                         self?.mainDispatchQueue.async {
-                                          success(data)
+                                          success?(data)
                                         }
       })
       
       task.resume()
-      return task
       
     } catch let error {
       mainDispatchQueue.async {
-        failure(error)
+        failure?(error)
       }
-      return nil
     }
   }
   

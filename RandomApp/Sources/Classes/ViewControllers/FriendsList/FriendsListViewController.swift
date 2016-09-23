@@ -11,6 +11,10 @@ import SnapKit
 
 final class FriendsListViewController: UIViewController {
   
+  struct Constants {
+    static let tableViewRowHeight: CGFloat = 60.0
+  }
+  
   //MARK: - Properties
 
   fileprivate var viewModel: FriendsListViewModel!
@@ -32,10 +36,6 @@ final class FriendsListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureView()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
     reloadData()
   }
   
@@ -44,7 +44,6 @@ final class FriendsListViewController: UIViewController {
   private func configureView() {
     configureTableView()
     registerCells()
-    
     configureViewModel()
   }
   
@@ -58,7 +57,7 @@ final class FriendsListViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     
-    tableView.estimatedRowHeight = 60
+    tableView.estimatedRowHeight = Constants.tableViewRowHeight
     tableView.rowHeight = UITableViewAutomaticDimension
   }
   
@@ -88,16 +87,22 @@ final class FriendsListViewController: UIViewController {
   
   //MARK: - Update
   
+  func refresh() {
+    reloadData()
+  }
+  
   private func viewModelWillUpdate() {
-    
+    showHUD()
   }
   
   private func viewModelDidUpdate() {
+    dismissHUD()
     tableView.reloadData()
   }
   
   private func viewModelDidFail(error: Error) {
-    
+    dismissHUD()
+    showAlert(with: error)
   }
   
 }
@@ -106,11 +111,17 @@ final class FriendsListViewController: UIViewController {
 
 extension FriendsListViewController: UITableViewDelegate {
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    viewModel.selectFriend(at: indexPath)
+  }
+  
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard let cell = cell as? FriendCell else {
       fatalError("Cell is not FriendCell as expected")
     }
     
+    cell.uniqueIndexPath = indexPath
     let cellViewModel = viewModel.cellViewModel(for: indexPath)
     cell.update(with: cellViewModel)
   }

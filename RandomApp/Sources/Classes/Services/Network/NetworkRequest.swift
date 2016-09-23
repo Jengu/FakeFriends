@@ -13,7 +13,8 @@ enum NetworkRequestError: Error, CustomStringConvertible {
   
   var description: String {
     switch self {
-    case .invalidURL(let url): return "Invalid url '\(url)'"
+    case .invalidURL(let url):
+      return "Invalid url '\(url)'"
     }
   }
 }

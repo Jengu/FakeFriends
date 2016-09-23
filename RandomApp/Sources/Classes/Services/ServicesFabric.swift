@@ -22,7 +22,11 @@ struct ServicesFabric: ServicesFabricable {
   }
   
   static func apiProvider() -> API {
-    return APIProvider(network: self.networkProvider())
+    return APIProvider(network: networkProvider())
+  }
+  
+  static func imageCache() -> ImageCache {
+    return ImageCacheProvider(network: networkProvider())
   }
   
 }

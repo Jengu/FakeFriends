@@ -7,12 +7,26 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FriendCellViewModel {
   
-  var username: String? { get }
-  var avatarImageURLString: String? { get }
+  //MARK: - Properties
   
-  init(friend: Friend)
+  var friend: Friend { get }
+  var username: String? { get }
+  var avatarImage: UIImage { get }
+
+  var restrictedTo: IndexPath? { get set }
+  
+  var didUpdate: ((FriendCellViewModel) -> Void)? { get set }
+  
+  //MARK: - Init
+  
+  init(friend: Friend, imageCache: ImageCache)
+  
+  //MARK: - Methods
+  
+  func allowAccess(for uniqueCell: UniqueCell) -> Bool
   
 }

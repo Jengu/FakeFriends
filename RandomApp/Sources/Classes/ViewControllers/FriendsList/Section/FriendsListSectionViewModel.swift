@@ -10,7 +10,11 @@ import Foundation
 
 protocol FriendsListSectionViewModel {
  
+  //MARK: - Properties
+  
   var cellViewModels: [FriendCellViewModel] { get }
+  
+  //MARK: - Init
   
   init(friends: [Friend])
   

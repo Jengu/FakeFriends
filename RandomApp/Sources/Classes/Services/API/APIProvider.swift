@@ -10,20 +10,26 @@ import Foundation
 
 final class APIProvider: API {
   
+  //MARK: - Properties
+  
   let network: Network
+  
+  //MARK: - Init
   
   init(network: Network) {
     self.network = network
   }
   
-  func getRandomFriends(success: @escaping ([Friend]) -> Void,
-                        failure: @escaping (Error) -> Void) {
+  //MARK: - API
+  
+  func getRandomFriends(success: (([Friend]) -> Void)?,
+                        failure: ((Error) -> Void)?) {
     let friendRequest = RequestFabric.randomFriendsRequest()
     network.make(request: friendRequest, success: {
       (jsonDict: [String : AnyObject]) in
       
       guard let items = jsonDict["results"] as? [[String : AnyObject]] else {
-        failure(APIError.invalidResponse)
+        failure?(APIError.invalidResponse)
         return
       }
       
@@ -31,7 +37,7 @@ final class APIProvider: API {
         Friend(JSON: $0)
       }
       
-      success(friends)
+      success?(friends)
       
       }, failure: failure)
   }

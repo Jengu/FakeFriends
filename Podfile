@@ -8,6 +8,7 @@ target 'RandomApp' do
   # Pods for RandomApp
   pod 'SnapKit'
   pod 'ObjectMapper'
+  pod 'KRProgressHUD'
 
   target 'RandomAppTests' do
     inherit! :search_paths

@@ -8,11 +8,20 @@
 
 import UIKit
 
+protocol FriendsListViewModelDelegate {
+  
+  func friendListViewModel(viewModel: FriendsListViewModel, didSelect friend: Friend)
+  
+}
+
 final class FriendsListDefaultViewModel: FriendsListViewModel {
   
   //MARK: - Properties
   
+  var delegate: FriendsListViewModelDelegate?
+  
   var sectionViewModels: [FriendsListSectionViewModel] = []
+  private var friends: [Friend] = []
   private let apiProvider: API
   
   var willUpdate: (() -> Void)?
@@ -36,7 +45,8 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   }
   
   func cellViewModel(for indexPath: IndexPath) -> FriendCellViewModel {
-    let cellViewModel = sectionViewModels[indexPath.section].cellViewModels[indexPath.row]
+    var cellViewModel = sectionViewModels[indexPath.section].cellViewModels[indexPath.row]
+    cellViewModel.restrictedTo = indexPath
     return cellViewModel
   }
   
@@ -54,6 +64,9 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   
   private func handle(new friends: [Friend]) {
     sectionViewModels.removeAll()
+    self.friends.removeAll()
+    
+    self.friends.append(contentsOf: friends)
     
     let sectionViewModel = FriendsListSectionDefaultViewModel(friends: friends)
     sectionViewModels.append(sectionViewModel)
@@ -63,6 +76,12 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   
   private func handle(error: Error) {
     didFail?(error)
+  }
+  
+  //MARK: - Handle friend selection
+  
+  func selectFriend(at indexPath: IndexPath) {
+    delegate?.friendListViewModel(viewModel: self, didSelect: friends[indexPath.row])
   }
   
 }

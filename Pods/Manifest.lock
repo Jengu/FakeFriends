@@ -1,15 +1,18 @@
 PODS:
+  - KRProgressHUD (2.0.0)
   - ObjectMapper (2.0.0)
   - SnapKit (3.0.1)
 
 DEPENDENCIES:
+  - KRProgressHUD
   - ObjectMapper
   - SnapKit
 
 SPEC CHECKSUMS:
+  KRProgressHUD: fa77b02194e532579579d5f0953282dab1c961c5
   ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
 
-PODFILE CHECKSUM: dc47c9f897819333b14ee0e55609f9936ac87f45
+PODFILE CHECKSUM: 12072703302555d16875e2d484432aa65d42e93a
 
 COCOAPODS: 1.1.0.beta.1

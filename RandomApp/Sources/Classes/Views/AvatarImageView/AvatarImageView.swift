@@ -11,6 +11,11 @@ import UIKit
 
 class AvatarImageView: UIImageView {
   
+  struct Constants {
+    static let cornerRadiusMultiplier: CGFloat = 0.5
+    static let borderWidth: CGFloat = 1
+  }
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     configure()
@@ -18,13 +23,13 @@ class AvatarImageView: UIImageView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    layer.cornerRadius = frame.size.width * 0.5
+    layer.cornerRadius = frame.size.width * Constants.cornerRadiusMultiplier
   }
   
   private func configure() {
     layer.masksToBounds = true
-    layer.borderColor = UIColor.black.cgColor
-    layer.borderWidth = 2
+    layer.borderColor = UIColor.lightGray.cgColor
+    layer.borderWidth = Constants.borderWidth
   }
   
 }

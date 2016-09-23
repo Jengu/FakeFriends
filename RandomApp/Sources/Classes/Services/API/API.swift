@@ -14,8 +14,10 @@ enum APIError: Error, CustomStringConvertible {
   
   var description: String {
     switch self {
-    case .invalidResponse: return "Received an invalid response"
-    case .notFound: return "Requested item was not found"
+    case .invalidResponse:
+      return "Received an invalid response"
+    case .notFound:
+      return "Requested item was not found"
     }
   }
 }
@@ -26,7 +28,7 @@ protocol API {
   
   init(network: Network)
   
-  func getRandomFriends(success: @escaping ([Friend]) -> Void,
-                        failure: @escaping (Error) -> Void)
+  func getRandomFriends(success: (([Friend]) -> Void)?,
+                        failure: ((Error) -> Void)?)
   
 }

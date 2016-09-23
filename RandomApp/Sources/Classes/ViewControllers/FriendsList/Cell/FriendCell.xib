@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,32 +15,46 @@
                 <frame key="frameInset" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aJa-9I-w44" customClass="AvatarImageView" customModule="RandomApp" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpT-px-mJz">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6H-vX-Ore">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aJa-9I-w44" customClass="AvatarImageView" customModule="RandomApp" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="dG9-ja-nai"/>
+                                    <constraint firstAttribute="height" constant="44" id="ltK-ZE-5ta"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="LI1-jy-l7J"/>
-                            <constraint firstAttribute="width" constant="44" id="h1C-PK-Zgy"/>
+                            <constraint firstItem="aJa-9I-w44" firstAttribute="top" secondItem="fpT-px-mJz" secondAttribute="top" constant="8" id="PlC-Aq-s3f"/>
+                            <constraint firstItem="x6H-vX-Ore" firstAttribute="leading" secondItem="aJa-9I-w44" secondAttribute="trailing" constant="8" id="WUO-x6-PCT"/>
+                            <constraint firstAttribute="bottom" secondItem="aJa-9I-w44" secondAttribute="bottom" constant="8" id="ena-a6-hji"/>
+                            <constraint firstItem="x6H-vX-Ore" firstAttribute="centerY" secondItem="fpT-px-mJz" secondAttribute="centerY" id="ntI-uj-znr"/>
+                            <constraint firstAttribute="height" constant="60" id="qcE-02-tOI"/>
+                            <constraint firstAttribute="trailing" secondItem="x6H-vX-Ore" secondAttribute="trailing" constant="8" id="xp2-8k-nTM"/>
+                            <constraint firstItem="aJa-9I-w44" firstAttribute="leading" secondItem="fpT-px-mJz" secondAttribute="leading" constant="8" id="zS4-hN-I4k"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6H-vX-Ore">
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aJa-9I-w44" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="4zn-t7-3o2"/>
-                    <constraint firstItem="x6H-vX-Ore" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6t0-JN-Z8d"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="x6H-vX-Ore" secondAttribute="trailing" constant="8" id="Cis-HH-n0b"/>
-                    <constraint firstItem="x6H-vX-Ore" firstAttribute="leading" secondItem="aJa-9I-w44" secondAttribute="trailing" constant="8" id="IoN-b4-AOI"/>
-                    <constraint firstItem="aJa-9I-w44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="UwI-SI-Adc"/>
-                    <constraint firstAttribute="bottom" secondItem="aJa-9I-w44" secondAttribute="bottom" constant="8" id="wQD-eO-0Fr"/>
+                    <constraint firstAttribute="bottom" secondItem="fpT-px-mJz" secondAttribute="bottom" id="4Ic-64-hA3"/>
+                    <constraint firstItem="fpT-px-mJz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RmJ-hB-YKV"/>
+                    <constraint firstAttribute="trailing" secondItem="fpT-px-mJz" secondAttribute="trailing" id="hRv-5c-LiA"/>
+                    <constraint firstItem="fpT-px-mJz" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="jVh-n8-47t"/>
+                    <constraint firstItem="fpT-px-mJz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="p0N-4t-Tg7"/>
+                    <constraint firstItem="fpT-px-mJz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tcU-6t-xCx"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="aJa-9I-w44" id="SsW-kq-ngm"/>
                 <outlet property="usernameLabel" destination="x6H-vX-Ore" id="LC1-Sw-d8S"/>
             </connections>
-            <point key="canvasLocation" x="-215" y="-50"/>
+            <point key="canvasLocation" x="-414" y="-43"/>
         </tableViewCell>
     </objects>
 </document>

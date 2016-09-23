@@ -25,11 +25,11 @@ enum NetworkError: Error, CustomStringConvertible {
 protocol Network {
     
   func make(request: NetworkRequest,
-            success: @escaping ([String : AnyObject]) -> Void,
-            failure: @escaping (Error) -> Void) -> URLSessionDataTask?
+            success: (([String : AnyObject]) -> Void)?,
+            failure: ((Error) -> Void)?)
   
   func make(request: NetworkRequest,
-            success: @escaping (Data) -> Void,
-            failure: @escaping (Error) -> Void) -> URLSessionDataTask?
+            success: ((Data) -> Void)?,
+            failure: ((Error) -> Void)?)
   
 }

@@ -8,28 +8,32 @@
 
 import Foundation
 
-struct URLFabric {
+struct RequestFabric {
   
-  private static let baseURL = "http://api.randomuser.me"
-  private static var resultsPart = "?results="
+  //MARK: - Private helpers
   
-  static func randomFriendsURL(count: Int) -> String {
-    return "\(baseURL)/\(resultsPart)\(count)"
+  private struct URLFabric {
+    private static let baseURL = "http://api.randomuser.me"
+    private static var resultsPart = "?results="
+    
+    static func randomFriendsURL(count: Int) -> String {
+      return "\(baseURL)/\(resultsPart)\(count)"
+    }
+  }
+
+  private struct DefaultRequestsCount {
+    static let randomFriendsCount = 20
   }
   
-}
-
-struct DefaultRequestsCount {
-  
-  static let randomFriendsCount = 20
-  
-}
-
-struct RequestFabric {
+  //MARK: - Requests
   
   static func randomFriendsRequest() -> NetworkRequest {
     return NetworkRequest(method: .get,
                           url: URLFabric.randomFriendsURL(count: DefaultRequestsCount.randomFriendsCount))
+  }
+  
+  static func imageRequest(from url: String) -> NetworkRequest {
+    return NetworkRequest(method: .get, url: url)
   }
   
 }

@@ -11,9 +11,14 @@ import ObjectMapper
 
 class Friend: Mappable {
   
+  //MARK: - Properties
+  
   var firstName: String?
   var lastName: String?
   var avatarImageURLString: String?
+  var phoneNumber: String?
+  
+  //MARK: - Map
   
   required init?(map: Map) {
   }
@@ -21,7 +26,8 @@ class Friend: Mappable {
   func mapping(map: Map) {
     firstName <- map["name.first"]
     lastName <- map["name.last"]
-    avatarImageURLString <- map["picture.thumbnail"]
+    avatarImageURLString <- map["picture.medium"]
+    phoneNumber <- map["phone"]
   }
   
 }
