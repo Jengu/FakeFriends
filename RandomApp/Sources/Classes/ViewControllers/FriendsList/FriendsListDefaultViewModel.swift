@@ -23,6 +23,7 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   var sectionViewModels: [FriendsListSectionViewModel] = []
   private var friends: [Friend] = []
   private let apiProvider: API
+  private let store: Store
   
   var willUpdate: (() -> Void)?
   var didUpdate: (() -> Void)?
@@ -30,8 +31,12 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   
   //MARK: - Init
   
-  init(apiProvider: API) {
+  init(apiProvider: API, store: Store) {
     self.apiProvider = apiProvider
+    self.store = store
+    
+    let friends = Array(store.defaultRealm.objects(Friend.self))
+    handle(new: friends)
   }
   
   //MARK: - Stucture helpers
@@ -55,6 +60,13 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   func reloadData() {
     willUpdate?()
     
+    deleteOldFriends { [weak self] in
+      guard let `self` = self else { return }
+      self.getNewFriends()
+    }
+  }
+  
+  private func getNewFriends() {
     apiProvider.getRandomFriends(success: { [weak self] (friends) in
       self?.handle(new: friends)
     }) { [weak self] (error) in
@@ -62,16 +74,21 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
     }
   }
   
+  private func deleteOldFriends(completion: (() -> Void)?) {
+    store.delete(objects: Array(self.store.defaultRealm.objects(Friend.self))) {
+      completion?()
+    }
+  }
+  
   private func handle(new friends: [Friend]) {
-    sectionViewModels.removeAll()
-    self.friends.removeAll()
-    
-    self.friends.append(contentsOf: friends)
-    
-    let sectionViewModel = FriendsListSectionDefaultViewModel(friends: friends)
-    sectionViewModels.append(sectionViewModel)
-    
-    didUpdate?()
+    store.save(objects: friends) { [weak self] in
+      guard let `self` = self else { return }
+      self.sectionViewModels.removeAll()
+      self.friends = friends
+      let sectionViewModel = FriendsListSectionDefaultViewModel(friends: friends)
+      self.sectionViewModels.append(sectionViewModel)
+      self.didUpdate?()
+    }
   }
   
   private func handle(error: Error) {

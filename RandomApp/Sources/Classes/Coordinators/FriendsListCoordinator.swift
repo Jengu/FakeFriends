@@ -13,12 +13,14 @@ final class FriendsListCoordinator: BaseCoordinating {
   //MARK: - Properties
   
   let rootViewController: UIViewController
-  private let servicesFabric = ServicesFabric()
+  private let servicesFactory = ServicesFactory()
+  private let store: Store
   
   //MARK: - Init
   
-  init(rootViewController: UIViewController) {
+  init(rootViewController: UIViewController, store: Store) {
     self.rootViewController = rootViewController
+    self.store = store
   }
   
   //MARK: - Start
@@ -30,7 +32,8 @@ final class FriendsListCoordinator: BaseCoordinating {
   //MARK: - Show
   
   fileprivate func showFriendsListViewController() {
-    let viewModel = FriendsListDefaultViewModel(apiProvider: ServicesFabric.apiProvider())
+    let viewModel = FriendsListDefaultViewModel(apiProvider: ServicesFactory.apiProvider(),
+                                                store: store)
     viewModel.delegate = self
     let viewController = FriendsListViewController(viewModel: viewModel)
     
@@ -38,12 +41,14 @@ final class FriendsListCoordinator: BaseCoordinating {
                                         target: viewController,
                                         action: #selector(viewController.refresh))
     viewController.navigationItem.leftBarButtonItem = refreshButton
-   
+    viewController.navigationItem.title = "FRIENDS"
+    
     show(viewController: viewController, animated: false)
   }
   
   fileprivate func showFriendDetailsViewController(with friend: Friend) {
-    let viewModel = FriendDetailsDefaultViewModel(friend: friend, imageCache: ServicesFabric.imageCache())
+    let viewModel = FriendDetailsDefaultViewModel(friend: friend, imageCache: ServicesFactory.imageCache(),
+                                                  store: store)
     let viewController = FriendDetailsViewController(viewModel: viewModel)
     show(viewController: viewController, animated: true)
   }

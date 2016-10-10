@@ -1,18 +1,26 @@
 PODS:
   - KRProgressHUD (2.0.0)
   - ObjectMapper (2.0.0)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
   - SnapKit (3.0.1)
 
 DEPENDENCIES:
   - KRProgressHUD
   - ObjectMapper
+  - RealmSwift
   - SnapKit
 
 SPEC CHECKSUMS:
   KRProgressHUD: fa77b02194e532579579d5f0953282dab1c961c5
   ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
 
-PODFILE CHECKSUM: 12072703302555d16875e2d484432aa65d42e93a
+PODFILE CHECKSUM: be88db89a418a1ef09b9a431bf36beb434b6f98a
 
 COCOAPODS: 1.1.0.beta.1

@@ -36,7 +36,7 @@ final class FriendsListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureView()
-    reloadData()
+//    reloadData()
   }
   
   //MARK: - Configure

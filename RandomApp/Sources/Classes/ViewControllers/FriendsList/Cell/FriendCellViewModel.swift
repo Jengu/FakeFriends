@@ -14,7 +14,7 @@ protocol FriendCellViewModel {
   //MARK: - Properties
   
   var friend: Friend { get }
-  var username: String? { get }
+  var username: String { get }
   var avatarImage: UIImage { get }
 
   var restrictedTo: IndexPath? { get set }

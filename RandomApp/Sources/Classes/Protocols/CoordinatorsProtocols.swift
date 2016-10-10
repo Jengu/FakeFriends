@@ -18,7 +18,7 @@ protocol BaseCoordinating: InitialCoordinating {
   
   var rootViewController: UIViewController { get }
   
-  init(rootViewController: UIViewController)
+  init(rootViewController: UIViewController, store: Store)
   
 }
 

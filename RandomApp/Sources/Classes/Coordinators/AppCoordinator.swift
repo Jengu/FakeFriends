@@ -13,6 +13,9 @@ final class AppCoordinator: AppCoordinating {
   //MARK: - Properties
   
   let window: UIWindow
+  
+  private let store = ServicesFactory.storeProvider()
+  
   private var navigationController: UINavigationController?
   private var friendsListCoordinator: FriendsListCoordinator?
   
@@ -42,7 +45,8 @@ final class AppCoordinator: AppCoordinating {
     guard let navigationController = navigationController else {
       fatalError("There is no navigation controller")
     }
-    friendsListCoordinator = FriendsListCoordinator(rootViewController: navigationController)
+    friendsListCoordinator = FriendsListCoordinator(rootViewController: navigationController,
+                                                    store: store)
     friendsListCoordinator?.start()
   }
   

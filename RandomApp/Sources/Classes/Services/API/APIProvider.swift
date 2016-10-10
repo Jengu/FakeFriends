@@ -24,13 +24,23 @@ final class APIProvider: API {
   
   func getRandomFriends(success: (([Friend]) -> Void)?,
                         failure: ((Error) -> Void)?) {
-    let friendRequest = RequestFabric.randomFriendsRequest()
+    let friendRequest = RequestFactory.randomFriendsRequest()
     network.make(request: friendRequest, success: {
       (jsonDict: [String : AnyObject]) in
       
-      guard let items = jsonDict["results"] as? [[String : AnyObject]] else {
+      guard var items = jsonDict["results"] as? [[String : Any]] else {
         failure?(APIError.invalidResponse)
         return
+      }
+      
+      items = items.map() { friendDict in
+        var mutableFriendDict = friendDict
+        guard var idDict = friendDict["id"] as? [String : Any] else {
+          fatalError()
+        }
+        idDict["value"] = Int(arc4random())
+        mutableFriendDict["id"] = idDict
+        return mutableFriendDict
       }
       
       let friends = items.flatMap() {
@@ -38,7 +48,6 @@ final class APIProvider: API {
       }
       
       success?(friends)
-      
       }, failure: failure)
   }
   

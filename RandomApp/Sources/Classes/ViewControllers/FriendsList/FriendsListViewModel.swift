@@ -21,7 +21,7 @@ protocol FriendsListViewModel {
 
   //MARK: - Init
   
-  init(apiProvider: API)
+  init(apiProvider: API, store: Store)
   
   //MARK: - Methods
   

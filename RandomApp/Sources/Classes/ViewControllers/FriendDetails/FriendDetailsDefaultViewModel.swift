@@ -13,11 +13,12 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   //MARK: - Properties
   
   private let imageCache: ImageCache
+  private let store: Store
   
   var friend: Friend
   
-  var username: String? {
-    return StringFormatter.formattedUsername(for: friend)
+  var username: String {
+    return StringFormatter.formattedUsername(for: friend) 
   }
   
   var avatarImage: UIImage {
@@ -34,14 +35,19 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
     return friend.phoneNumber ?? ""
   }
   
+  var nickname: String {
+    return friend.nickname ?? ""
+  }
+  
   var didUpdate: ((FriendDetailsViewModel) -> Void)?
   var didFail: ((Error) -> Void)?
   
   //MARK: - Init
   
-  init(friend: Friend, imageCache: ImageCache) {
-    self.friend = friend
+  init(friend: Friend, imageCache: ImageCache, store: Store) {
+    self.friend = Friend(value: friend)
     self.imageCache = imageCache
+    self.store = store
   }
   
   //MARK: - Download avatar image
@@ -58,6 +64,21 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
       self.didUpdate?(self)
     }) { [weak self] (error) in
       self?.didFail?(error)
+    }
+  }
+  
+  //MARK: - Friend mutation
+  
+  func nicknameDidChange(to newNickname: String) {
+    friend.nickname = newNickname
+  }
+  
+  //MARK: - Save
+  
+  func save() {
+    store.save(object: friend) { [weak self] in
+      guard let `self` = self else { return }
+      self.didUpdate?(self)
     }
   }
   

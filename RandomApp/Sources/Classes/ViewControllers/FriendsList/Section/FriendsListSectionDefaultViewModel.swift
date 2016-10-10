@@ -26,7 +26,7 @@ final class FriendsListSectionDefaultViewModel: FriendsListSectionViewModel {
   
   private func createCellViewModels() {
     cellViewModels = friends.flatMap() {
-      FriendCellDefaultViewModel(friend: $0, imageCache: ServicesFabric.imageCache())
+      FriendCellDefaultViewModel(friend: $0, imageCache: ServicesFactory.imageCache())
     }
   }
   

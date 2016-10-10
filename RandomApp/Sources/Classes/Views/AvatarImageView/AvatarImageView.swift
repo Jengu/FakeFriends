@@ -16,6 +16,21 @@ class AvatarImageView: UIImageView {
     static let borderWidth: CGFloat = 1
   }
   
+  init() {
+    super.init(frame: CGRect.zero)
+    configure()
+  }
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    configure()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    configure()
+  }
+    
   override func awakeFromNib() {
     super.awakeFromNib()
     configure()

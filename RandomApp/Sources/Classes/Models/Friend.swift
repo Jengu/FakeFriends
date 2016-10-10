@@ -7,23 +7,35 @@
 //
 
 import Foundation
+import RealmSwift
 import ObjectMapper
 
-class Friend: Mappable {
+class Friend: Object, ModelIdentifiable, Mappable {
   
   //MARK: - Properties
   
-  var firstName: String?
-  var lastName: String?
-  var avatarImageURLString: String?
-  var phoneNumber: String?
+  dynamic var id = 0
+  
+  dynamic var firstName: String? = nil
+  dynamic var lastName: String? = nil
+  dynamic var avatarImageURLString: String? = nil
+  dynamic var phoneNumber: String? = nil
+  dynamic var nickname: String? = nil
+  
+  override static func primaryKey() -> String? {
+    return "id"
+  }
+  
+  //MARK: - Init
+  
+  required convenience init?(map: Map) {
+    self.init()
+  }
   
   //MARK: - Map
   
-  required init?(map: Map) {
-  }
-  
   func mapping(map: Map) {
+    id <- map["id.value"]
     firstName <- map["name.first"]
     lastName <- map["name.last"]
     avatarImageURLString <- map["picture.medium"]

@@ -13,6 +13,8 @@ class ImageCacheProvider: ImageCache {
   
   //MARK: - Properties
   
+  static let shared = ImageCacheProvider(network: ServicesFactory.networkProvider())
+  
   private let network: Network
   private var cache: [String : UIImage] = [:]
   
@@ -32,7 +34,7 @@ class ImageCacheProvider: ImageCache {
       return
     }
     
-    let request = RequestFabric.imageRequest(from: url)
+    let request = RequestFactory.imageRequest(from: url)
     
     network.make(request: request, success: { [weak self] (data: Data) in
       

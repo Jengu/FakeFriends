@@ -12,11 +12,14 @@ class FriendDetailsViewController: UIViewController {
   
   //MARK: - Properties
   
-  private var viewModel: FriendDetailsViewModel
+  fileprivate var viewModel: FriendDetailsViewModel
   
   lazy private var avatarImageView: AvatarImageView = AvatarImageView()
   lazy private var usernameLabel = UILabel()
   lazy private var phoneLabel = UILabel()
+  lazy private var nicknameTextField = UITextField()
+  
+  private var tapGR: UITapGestureRecognizer?
   
   //MARK: - Init
   
@@ -34,22 +37,83 @@ class FriendDetailsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureView()
-    configureViewModel()
-    viewModelDidUpdate()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    viewModel.save()
   }
   
   //MARK: - Configure
   
   private func configureView() {
     view.backgroundColor = UIColor.white
-    
+    addUIElements()
+    addTapGestureRecognizer()
+    configureViewModel()
+    viewModelDidUpdate()
+  }
+  
+  //MARK: UI
+  
+  private func addUIElements() {
+    addAvatarImageView()
+    addUsernameLabel()
+    addPhoneLabel()
+    addNicknameTextField()
+  }
+  
+  private func addAvatarImageView() {
     view.addSubview(avatarImageView)
     avatarImageView.snp.makeConstraints { (make) in
-      make.top.equalTo(self.view).offset(16)
-      make.width.height.equalTo(44)
+      make.top.equalTo(self.view).offset(16 + 44 + 20)
+      make.width.height.equalTo(84)
       make.centerX.equalTo(self.view)
     }
   }
+  
+  private func addUsernameLabel() {
+    view.addSubview(usernameLabel)
+    usernameLabel.snp.makeConstraints { (make) in
+      make.top.equalTo(self.avatarImageView.snp.bottom).offset(8)
+      make.centerX.equalTo(self.view)
+    }
+  }
+  
+  private func addPhoneLabel() {
+    view.addSubview(phoneLabel)
+    phoneLabel.snp.makeConstraints { (make) in
+      make.top.equalTo(self.usernameLabel.snp.bottom).offset(8)
+      make.centerX.equalTo(self.view)
+    }
+  }
+  
+  private func addNicknameTextField() {
+    view.addSubview(nicknameTextField)
+    nicknameTextField.snp.makeConstraints { (make) in
+      make.top.equalTo(self.phoneLabel.snp.bottom).offset(16)
+      make.leading.trailing.equalTo(self.view).inset(8)
+      make.height.equalTo(32)
+    }
+    nicknameTextField.placeholder = "Nickname"
+    nicknameTextField.layer.borderColor = UIColor.black.cgColor
+    nicknameTextField.layer.borderWidth = 1
+    nicknameTextField.layer.cornerRadius = 5
+    nicknameTextField.textAlignment = NSTextAlignment.center
+    nicknameTextField.delegate = self
+  }
+  
+  //MARK: Tap GR
+  
+  private func addTapGestureRecognizer() {
+    let tapGR = UITapGestureRecognizer(target: self,
+                                       action: #selector(handleTap(tapGR:)))
+    view.addGestureRecognizer(tapGR)
+    
+    self.tapGR = tapGR
+  }
+  
+  //MARK: ViewModel
   
   private func configureViewModel() {
     viewModel.didUpdate = { [weak self] (viewModel) in
@@ -57,7 +121,7 @@ class FriendDetailsViewController: UIViewController {
     }
     
     viewModel.didFail = { [weak self] (error) in
-    self?.viewModelDidFail(error: error)
+      self?.viewModelDidFail(error: error)
     }
   }
   
@@ -65,10 +129,27 @@ class FriendDetailsViewController: UIViewController {
     avatarImageView.image = viewModel.avatarImage
     usernameLabel.text = viewModel.username
     phoneLabel.text = viewModel.phoneNumber
+    nicknameTextField.text = viewModel.nickname
   }
   
   private func viewModelDidFail(error: Error) {
     showAlert(with: error)
+  }
+  
+  //MARK: - Handle tap GR
+  
+  @objc private func handleTap(tapGR: UITapGestureRecognizer) {
+    view.endEditing(true)
+  }
+  
+}
+
+//MARK: - UITextFieldDelegate
+
+extension FriendDetailsViewController: UITextFieldDelegate {
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    viewModel.nicknameDidChange(to: textField.text ?? "")
   }
   
 }

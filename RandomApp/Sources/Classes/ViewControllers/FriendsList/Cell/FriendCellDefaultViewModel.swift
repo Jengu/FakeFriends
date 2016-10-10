@@ -17,7 +17,7 @@ class FriendCellDefaultViewModel: FriendCellViewModel {
   var restrictedTo: IndexPath?
   let imageCache: ImageCache
   
-  var username: String? {
+  var username: String {
     return StringFormatter.formattedUsername(for: friend)
   }
   

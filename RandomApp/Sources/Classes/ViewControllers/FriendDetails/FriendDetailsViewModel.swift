@@ -14,15 +14,21 @@ protocol FriendDetailsViewModel {
   
   var friend: Friend { get }
   
-  var username: String? { get }
+  var username: String { get }
   var avatarImage: UIImage { get }
   var phoneNumber: String { get }
+  var nickname: String { get }
   
   var didUpdate: ((FriendDetailsViewModel) -> Void)? { get set }
   var didFail: ((Error) -> Void)? { get set }
   
   //MARK: - Init
   
-  init(friend: Friend, imageCache: ImageCache)
+  init(friend: Friend, imageCache: ImageCache, store: Store)
+  
+  //MARK: - Methods
+  
+  func nicknameDidChange(to newNickname: String)
+  func save()
   
 }
