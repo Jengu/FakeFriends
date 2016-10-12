@@ -464,7 +464,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = "On The Moon";
+				ORGANIZATIONNAME = Jengu;
 				TargetAttributes = {
 					FF4DB6311D8C0D3D00424759 = {
 						CreatedOnToolsVersion = 8.0;

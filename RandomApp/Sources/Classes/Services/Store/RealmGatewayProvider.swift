@@ -3,7 +3,7 @@
 //  RandomApp
 //
 //  Created by Ilyas Siraev on 27.09.16.
-//  Copyright © 2016 On The Moon. All rights reserved.
+//  Copyright © 2016 Jengu. All rights reserved.
 //
 
 import Foundation
@@ -27,14 +27,14 @@ final class RealmGatewayProvider: RealmGateway {
   
   //MARK: - Save
   
-  func saveObject<T: Object>(_ object: T, completion: (() -> Void)?) where T: ThreadSaveable {
+  func save<T: Object>(_ object: T, completion: (() -> Void)?) where T: ThreadSaveable {
     handleInBackground(block: { [weak self] realm in
       guard let `self` = self else { return }
       self.save(in: realm, object: object)
       }, completion: completion)
   }
   
-  func saveObjects<T: Object>(_ objects: [T], completion: (() -> Void)?) where T: ThreadSaveable {
+  func save<T: Object>(_ objects: [T], completion: (() -> Void)?) where T: ThreadSaveable {
     handleInBackground(block: { [weak self] realm in
       guard let `self` = self else { return }
       for object in objects {
@@ -46,8 +46,8 @@ final class RealmGatewayProvider: RealmGateway {
   //MARK: - Private
   
   private func save<T: Object>(in realm: Realm, object: T) where T: ThreadSaveable {
-    let newObject = object.threadSaveObject()
-    realm.add(newObject, update: true)
+    let threadSaveObject = object.threadSaveObject()
+    realm.add(threadSaveObject, update: true)
   }
   
   private func handleInBackground(block: @escaping (Realm) -> Void, completion: (() -> Void)?) {

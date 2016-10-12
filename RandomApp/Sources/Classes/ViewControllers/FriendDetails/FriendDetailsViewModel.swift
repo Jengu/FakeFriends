@@ -3,7 +3,7 @@
 //  RandomApp
 //
 //  Created by Ilyas Siraev on 24.09.16.
-//  Copyright © 2016 On The Moon. All rights reserved.
+//  Copyright © 2016 Jengu. All rights reserved.
 //
 
 import UIKit

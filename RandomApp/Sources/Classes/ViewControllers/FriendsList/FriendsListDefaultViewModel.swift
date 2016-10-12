@@ -3,7 +3,7 @@
 //  RandomApp
 //
 //  Created by Ilyas Siraev on 20.09.16.
-//  Copyright © 2016 On The Moon. All rights reserved.
+//  Copyright © 2016 Jengu. All rights reserved.
 //
 
 import UIKit
@@ -34,14 +34,12 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
     self.apiProvider = apiProvider
     self.realmGateway = realmGateway
     self.imageCache = imageCache
-    
     let transform = { (friend: Friend) -> FriendCellViewModel in
       return FriendCellDefaultViewModel(friend: friend, imageCache: imageCache)
     }
-    
     cellViewModels = RealmMappedCollection(realm: self.realmGateway.defaultRealm, transform: transform)
   }
-  
+    
   //MARK: - Stucture helpers
   
   func numberOfSections() -> Int {
@@ -63,7 +61,7 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   func reloadData(completion: ((Error?) -> Void)?) {
     apiProvider.getRandomFriends(success: { [weak self] (friends) in
       guard let `self` = self else { return }
-      self.realmGateway.saveObjects(friends, completion: nil)
+      self.realmGateway.save(friends, completion: nil)
       completion?(nil)
     }) { (error) in
       completion?(error)
