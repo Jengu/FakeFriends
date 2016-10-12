@@ -18,7 +18,7 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   var friend: Friend
   
   var username: String {
-    return StringFormatter.formattedUsername(for: friend) 
+    return StringFormatter.formattedUsername(for: friend)
   }
   
   var avatarImage: UIImage {
@@ -71,9 +71,7 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   
   func save(new nickname: String?) {
     friend.nickname = nickname
-    self.realmGateway.save(object: friend,
-                           getThreadSaveObject: Friend.threadSaveObject,
-                           completion: nil)
+    self.realmGateway.saveObject(friend, completion: nil)
   }
   
 }

@@ -27,40 +27,39 @@ final class RealmGatewayProvider: RealmGateway {
   
   //MARK: - Save
   
-  func save<T: Object, F>(object: T, getThreadSaveObject: GetThreadSaveObject<F>?,
-            completion: (() -> Void)?) where T: RealmIdentifiable {
+  func saveObject<T: Object>(_ object: T, completion: (() -> Void)?) {
     handleInBackground(block: { [weak self] realm in
       guard let `self` = self else { return }
-      self.save(in: realm, object: object, getThreadSaveObject: getThreadSaveObject)
+      self.save(in: realm, object: object)
       }, completion: completion)
   }
   
-  func save<T: Collection, F>(objects: T, getThreadSaveObject: GetThreadSaveObject<F>?,
-            completion: (() -> Void)?) where T._Element: RealmIdentifiable {
+  func saveObjects<T: Object>(_ objects: [T], completion: (() -> Void)?) {
     handleInBackground(block: { [weak self] realm in
       guard let `self` = self else { return }
       for object in objects {
-        guard let object = object as? Object else { return }
-        self.save(in: realm, object: object, getThreadSaveObject: getThreadSaveObject)
+        self.save(in: realm, object: object)
       }
       }, completion: completion)
   }
   
-  
   //MARK: - Private
   
-  private func save<T: Object, F>(in realm: Realm, object: T,
-                    getThreadSaveObject: GetThreadSaveObject<F>?) {
+  private func save<T: Object>(in realm: Realm, object: T) {
     
-    
-    
-    if let threadSaveObject = Object.threadSaveObject(object: object) as? Object {
-      realm.add(threadSaveObject, update: true)
+    guard let threadSaveableObject = object as? ThreadSaveable else {
+      fatalError()
     }
+    
+    guard let newObject = threadSaveableObject.threadSaveObject(object: object) as? Object else {
+      fatalError()
+    }
+    
+    realm.add(newObject, update: true)
 
-    //    if let newThreadSaveObject = getThreadSaveObject(object) as? Object {
-//          realm.add(newThreadSaveObject, update: true)
-    //    }
+//    if let newThreadSaveObject = getThreadSaveObject(object) as? Object {
+//      realm.add(newThreadSaveObject, update: true)
+//    }
     
     //    guard let identifiable = object as? RealmIdentifiable else { return }
     //    let identifier = identifiable.identifier

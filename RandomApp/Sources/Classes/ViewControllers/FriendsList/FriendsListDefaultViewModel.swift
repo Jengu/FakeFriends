@@ -63,9 +63,7 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   func reloadData(completion: ((Error?) -> Void)?) {
     apiProvider.getRandomFriends(success: { [weak self] (friends) in
       guard let `self` = self else { return }
-      self.realmGateway.save(objects: friends,
-                             getThreadSaveObject: nil,
-                             completion: nil)
+      self.realmGateway.saveObjects(friends, completion: nil)
       completion?(nil)
     }) { (error) in
       completion?(error)

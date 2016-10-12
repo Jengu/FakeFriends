@@ -11,17 +11,17 @@ import RealmSwift
 import ObjectMapper
 
 protocol ThreadSaveable: class {
-  static func threadSaveObject<T>(object: T) -> T? where T: Object
+  func threadSaveObject<T>(object: T) -> T? where T: Object
 }
 
-extension Object: ThreadSaveable {
-  static func threadSaveObject<T>(object: T) -> T? where T: Object {
-    if let value = Object(value: object) as? T {
-      return value
-    }
-    return nil
-  }
-}
+//extension Object: ThreadSaveable {
+//  static func threadSaveObject<T>(object: T) -> T? where T: Object {
+//    if let value = Object(value: object) as? T {
+//      return value
+//    }
+//    return nil
+//  }
+//}
 
 class Friend: Object, Mappable, RealmIdentifiable {
   
@@ -35,7 +35,7 @@ class Friend: Object, Mappable, RealmIdentifiable {
   dynamic var phoneNumber: String? = nil
   dynamic var nickname: String? = nil
   
-
+  
   
   override static func primaryKey() -> String? {
     return "identifier"
@@ -57,6 +57,15 @@ class Friend: Object, Mappable, RealmIdentifiable {
     phoneNumber <- map["phone"]
   }
   
+}
+
+extension Friend: ThreadSaveable {
+  func threadSaveObject<T>(object: T) -> T? where T: Object {
+    if let value = Friend(value: object) as? T {
+      return value
+    }
+    return nil
+  }
 }
 
 //extension Friend {

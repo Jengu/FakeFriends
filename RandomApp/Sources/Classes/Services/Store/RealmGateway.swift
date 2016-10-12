@@ -22,12 +22,8 @@ protocol RealmGateway {
   
   //MARK: - Methods
   
-  typealias GetThreadSaveObject<ThreadSaveObject: Object> = (Object) -> ThreadSaveObject
+  func saveObject<T: Object>(_ object: T, completion: (() -> Void)?)
   
-  func save<T: Object, F>(object: T, getThreadSaveObject: GetThreadSaveObject<F>?,
-            completion: (() -> Void)?) where T: RealmIdentifiable
-  
-  func save<T: Collection, F>(objects: T, getThreadSaveObject: GetThreadSaveObject<F>?,
-            completion: (() -> Void)?) where T._Element: RealmIdentifiable
+  func saveObjects<T: Object>(_ objects: [T], completion: (() -> Void)?)
   
 }
