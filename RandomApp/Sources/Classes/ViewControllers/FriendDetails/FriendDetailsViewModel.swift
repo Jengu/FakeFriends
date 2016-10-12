@@ -24,11 +24,10 @@ protocol FriendDetailsViewModel {
   
   //MARK: - Init
   
-  init(friend: Friend, imageCache: ImageCache, store: Store)
+  init(friend: Friend, imageCache: ImageCache, realmGateway: RealmGateway)
   
   //MARK: - Methods
   
-  func nicknameDidChange(to newNickname: String)
-  func save()
+  func save(new nickname: String?)
   
 }

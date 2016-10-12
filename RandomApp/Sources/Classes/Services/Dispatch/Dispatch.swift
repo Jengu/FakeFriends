@@ -11,10 +11,10 @@ import Foundation
 struct Dispatch {
   
   static func performInBackground(block: @escaping () -> Void) {
-    DispatchQueue.main.async {
-      block()
-    }
-    return
+//    DispatchQueue.main.async {
+//      block()
+//    }
+//    return
     
     let concurrentQueue = DispatchQueue(label: "background", qos: .background)
     concurrentQueue.async {

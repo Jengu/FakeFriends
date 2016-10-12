@@ -22,8 +22,8 @@ struct ServicesFactory {
     return ImageCacheProvider.shared
   }
   
-  static func storeProvider() -> Store {
-    return StoreProvider(realm: RealmFactory.realm()) {
+  static func storeProvider() -> RealmGateway {
+    return RealmGatewayProvider(realm: RealmFactory.realm()) {
       return RealmFactory.realm()
     }
   }

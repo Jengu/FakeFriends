@@ -14,7 +14,7 @@ final class AppCoordinator: AppCoordinating {
   
   let window: UIWindow
   
-  private let store = ServicesFactory.storeProvider()
+  private let realmGateway = ServicesFactory.storeProvider()
   
   private var navigationController: UINavigationController?
   private var friendsListCoordinator: FriendsListCoordinator?
@@ -46,7 +46,7 @@ final class AppCoordinator: AppCoordinating {
       fatalError("There is no navigation controller")
     }
     friendsListCoordinator = FriendsListCoordinator(rootViewController: navigationController,
-                                                    store: store)
+                                                    realmGateway: realmGateway)
     friendsListCoordinator?.start()
   }
   

@@ -13,7 +13,7 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   //MARK: - Properties
   
   private let imageCache: ImageCache
-  private let store: Store
+  private let realmGateway: RealmGateway
   
   var friend: Friend
   
@@ -44,10 +44,10 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   
   //MARK: - Init
   
-  init(friend: Friend, imageCache: ImageCache, store: Store) {
+  init(friend: Friend, imageCache: ImageCache, realmGateway: RealmGateway) {
     self.friend = Friend(value: friend)
     self.imageCache = imageCache
-    self.store = store
+    self.realmGateway = realmGateway
   }
   
   //MARK: - Download avatar image
@@ -67,19 +67,13 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
     }
   }
   
-  //MARK: - Friend mutation
-  
-  func nicknameDidChange(to newNickname: String) {
-    friend.nickname = newNickname
-  }
-  
   //MARK: - Save
   
-  func save() {
-    store.save(object: friend) { [weak self] in
-      guard let `self` = self else { return }
-      self.didUpdate?(self)
-    }
+  func save(new nickname: String?) {
+    friend.nickname = nickname
+    self.realmGateway.save(object: friend,
+                           getThreadSaveObject: Friend.threadSaveObject,
+                           completion: nil)
   }
   
 }

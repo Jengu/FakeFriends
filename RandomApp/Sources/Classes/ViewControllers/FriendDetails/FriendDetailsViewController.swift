@@ -41,7 +41,7 @@ class FriendDetailsViewController: UIViewController {
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    viewModel.save()
+    viewModel.save(new: nicknameTextField.text)
   }
   
   //MARK: - Configure
@@ -100,7 +100,6 @@ class FriendDetailsViewController: UIViewController {
     nicknameTextField.layer.borderWidth = 1
     nicknameTextField.layer.cornerRadius = 5
     nicknameTextField.textAlignment = NSTextAlignment.center
-    nicknameTextField.delegate = self
   }
   
   //MARK: Tap GR
@@ -140,16 +139,6 @@ class FriendDetailsViewController: UIViewController {
   
   @objc private func handleTap(tapGR: UITapGestureRecognizer) {
     view.endEditing(true)
-  }
-  
-}
-
-//MARK: - UITextFieldDelegate
-
-extension FriendDetailsViewController: UITextFieldDelegate {
-  
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    viewModel.nicknameDidChange(to: textField.text ?? "")
   }
   
 }

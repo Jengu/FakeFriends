@@ -11,17 +11,15 @@ import UIKit
 
 protocol FriendsListViewModel {
   
+  typealias NotificationBlock = (_ deletions: [Int], _ insertions: [Int], _ modifications: [Int]) -> Void
+  
   //MARK: - Properties
-
-  var sectionViewModels: [FriendsListSectionViewModel] { get }
-
-  var willUpdate: (() -> Void)? { get set }
-  var didUpdate: (() -> Void)? { get set }
-  var didFail: ((Error) -> Void)? { get set }
+  
+  var cellViewModels: RealmMappedCollection<Friend, FriendCellViewModel> { get }
 
   //MARK: - Init
   
-  init(apiProvider: API, store: Store)
+  init(apiProvider: API, realmGateway: RealmGateway, imageCache: ImageCache)
   
   //MARK: - Methods
   
@@ -29,8 +27,10 @@ protocol FriendsListViewModel {
   func numberOfRows(in section: Int) -> Int
   func cellViewModel(for indexPath: IndexPath) -> FriendCellViewModel
   
-  func reloadData()
+  func reloadData(completion: ((Error?) -> Void)?)
   
   func selectFriend(at indexPath: IndexPath)
+  
+  func addNotificationBlock(block: @escaping NotificationBlock)
   
 }

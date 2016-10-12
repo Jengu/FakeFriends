@@ -10,11 +10,24 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-class Friend: Object, ModelIdentifiable, Mappable {
+protocol ThreadSaveable: class {
+  static func threadSaveObject<T>(object: T) -> T? where T: Object
+}
+
+extension Object: ThreadSaveable {
+  static func threadSaveObject<T>(object: T) -> T? where T: Object {
+    if let value = Object(value: object) as? T {
+      return value
+    }
+    return nil
+  }
+}
+
+class Friend: Object, Mappable, RealmIdentifiable {
   
   //MARK: - Properties
   
-  dynamic var id = 0
+  dynamic var identifier = 0
   
   dynamic var firstName: String? = nil
   dynamic var lastName: String? = nil
@@ -22,8 +35,10 @@ class Friend: Object, ModelIdentifiable, Mappable {
   dynamic var phoneNumber: String? = nil
   dynamic var nickname: String? = nil
   
+
+  
   override static func primaryKey() -> String? {
-    return "id"
+    return "identifier"
   }
   
   //MARK: - Init
@@ -35,7 +50,7 @@ class Friend: Object, ModelIdentifiable, Mappable {
   //MARK: - Map
   
   func mapping(map: Map) {
-    id <- map["id.value"]
+    identifier <- map["id.value"]
     firstName <- map["name.first"]
     lastName <- map["name.last"]
     avatarImageURLString <- map["picture.medium"]
@@ -43,3 +58,13 @@ class Friend: Object, ModelIdentifiable, Mappable {
   }
   
 }
+
+//extension Friend {
+//  
+//  static var threadSaveObject: (Object) -> Object {
+//    return { friend in
+//      return Friend(value: friend)
+//    }
+//  }
+//  
+//}

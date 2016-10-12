@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FriendsListViewModelDelegate {
+protocol FriendsListViewModelDelegate: class {
   
   func friendListViewModel(viewModel: FriendsListViewModel, didSelect friend: Friend)
   
@@ -16,89 +16,81 @@ protocol FriendsListViewModelDelegate {
 
 final class FriendsListDefaultViewModel: FriendsListViewModel {
   
+  typealias NotificationBlock = (_ deletions: [Int], _ insertions: [Int], _ modifications: [Int]) -> Void
+  
   //MARK: - Properties
   
-  var delegate: FriendsListViewModelDelegate?
+  weak var delegate: FriendsListViewModelDelegate?
   
-  var sectionViewModels: [FriendsListSectionViewModel] = []
-  private var friends: [Friend] = []
+  let cellViewModels: RealmMappedCollection<Friend, FriendCellViewModel>
+  
   private let apiProvider: API
-  private let store: Store
-  
-  var willUpdate: (() -> Void)?
-  var didUpdate: (() -> Void)?
-  var didFail: ((Error) -> Void)?
+  private let realmGateway: RealmGateway
+  private let imageCache: ImageCache
   
   //MARK: - Init
   
-  init(apiProvider: API, store: Store) {
+  init(apiProvider: API, realmGateway: RealmGateway, imageCache: ImageCache) {
     self.apiProvider = apiProvider
-    self.store = store
+    self.realmGateway = realmGateway
+    self.imageCache = imageCache
     
-    let friends = Array(store.defaultRealm.objects(Friend.self))
-    handle(new: friends)
+    let transform = { (friend: Friend) -> FriendCellViewModel in
+      return FriendCellDefaultViewModel(friend: friend, imageCache: imageCache)
+    }
+    
+    cellViewModels = RealmMappedCollection(realm: self.realmGateway.defaultRealm, transform: transform)
   }
   
   //MARK: - Stucture helpers
   
   func numberOfSections() -> Int {
-    return sectionViewModels.count
+    return 1
   }
   
   func numberOfRows(in section: Int) -> Int {
-    return sectionViewModels[section].cellViewModels.count
+    return cellViewModels.count
   }
   
   func cellViewModel(for indexPath: IndexPath) -> FriendCellViewModel {
-    var cellViewModel = sectionViewModels[indexPath.section].cellViewModels[indexPath.row]
+    var cellViewModel = cellViewModels.item(at: indexPath.row)
     cellViewModel.restrictedTo = indexPath
     return cellViewModel
   }
   
   //MARK: - Reload
   
-  func reloadData() {
-    willUpdate?()
-    
-    deleteOldFriends { [weak self] in
-      guard let `self` = self else { return }
-      self.getNewFriends()
-    }
-  }
-  
-  private func getNewFriends() {
+  func reloadData(completion: ((Error?) -> Void)?) {
     apiProvider.getRandomFriends(success: { [weak self] (friends) in
-      self?.handle(new: friends)
-    }) { [weak self] (error) in
-      self?.handle(error: error)
-    }
-  }
-  
-  private func deleteOldFriends(completion: (() -> Void)?) {
-    store.delete(objects: Array(self.store.defaultRealm.objects(Friend.self))) {
-      completion?()
-    }
-  }
-  
-  private func handle(new friends: [Friend]) {
-    store.save(objects: friends) { [weak self] in
       guard let `self` = self else { return }
-      self.sectionViewModels.removeAll()
-      self.friends = friends
-      let sectionViewModel = FriendsListSectionDefaultViewModel(friends: friends)
-      self.sectionViewModels.append(sectionViewModel)
-      self.didUpdate?()
+      self.realmGateway.save(objects: friends,
+                             getThreadSaveObject: nil,
+                             completion: nil)
+      completion?(nil)
+    }) { (error) in
+      completion?(error)
     }
   }
   
-  private func handle(error: Error) {
-    didFail?(error)
+  //MARK: - Notification
+  
+  func addNotificationBlock(block: @escaping NotificationBlock) {
+    cellViewModels.notificationBlock = { results in
+      switch results {
+      case .update(_, let deletions, let insertions, let modifications):
+        block(deletions, insertions, modifications)
+        break
+      default:
+        break
+      }
+    }
   }
   
   //MARK: - Handle friend selection
   
   func selectFriend(at indexPath: IndexPath) {
-    delegate?.friendListViewModel(viewModel: self, didSelect: friends[indexPath.row])
+    let cellViewModel = cellViewModels.item(at: indexPath.row)
+    delegate?.friendListViewModel(viewModel: self, didSelect: cellViewModel.friend)
   }
   
 }

@@ -16,7 +16,7 @@ final class FriendsListViewController: UIViewController {
   }
   
   //MARK: - Properties
-
+  
   fileprivate var viewModel: FriendsListViewModel!
   lazy private var tableView = UITableView()
   
@@ -36,7 +36,7 @@ final class FriendsListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureView()
-//    reloadData()
+    //    reloadData()
   }
   
   //MARK: - Configure
@@ -66,43 +66,29 @@ final class FriendsListViewController: UIViewController {
   }
   
   private func configureViewModel() {
-    viewModel.willUpdate = { [weak self] in
-      self?.viewModelWillUpdate()
-    }
-    
-    viewModel.didUpdate = { [weak self] in
-      self?.viewModelDidUpdate()
-    }
-    
-    viewModel.didFail = { [weak self] (error) in
-      self?.viewModelDidFail(error: error)
+    viewModel.addNotificationBlock { [unowned self] (deletions, insertions, modifications) in
+      self.tableView.beginUpdates()
+      self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) },
+                                with: .automatic)
+      self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) },
+                                with: .automatic)
+      self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) },
+                                with: .automatic)
+      self.tableView.endUpdates()
     }
   }
   
   //MARK: - Reload
   
-  private func reloadData() {
-    viewModel.reloadData()
-  }
-  
-  //MARK: - Update
-  
-  func refresh() {
-    reloadData()
-  }
-  
-  private func viewModelWillUpdate() {
+  func reloadData() {
     showHUD()
-  }
-  
-  private func viewModelDidUpdate() {
-    dismissHUD()
-    tableView.reloadData()
-  }
-  
-  private func viewModelDidFail(error: Error) {
-    dismissHUD()
-    showAlert(with: error)
+    viewModel.reloadData { [weak self] (error) in
+      guard let `self` = self else { return }
+      self.dismissHUD()
+      if let error = error {
+        self.showAlert(with: error)
+      }
+    }
   }
   
 }
@@ -139,7 +125,7 @@ extension FriendsListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return viewModel.numberOfRows(in: section)
   }
-
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     return FriendCell.dequeueCell(for: tableView, for: indexPath)
   }

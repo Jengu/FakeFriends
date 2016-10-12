@@ -59,9 +59,7 @@ class FriendCellDefaultViewModel: FriendCellViewModel {
     }
     
     imageCache.downloadImage(from: avatarImageURLString, success: { [weak self] (image) in
-      guard let `self` = self else {
-        return
-      }
+      guard let `self` = self else { return }
       self.didUpdate?(self)
       }, failure: nil)
   }
