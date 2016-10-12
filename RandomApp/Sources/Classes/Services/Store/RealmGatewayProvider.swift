@@ -27,14 +27,14 @@ final class RealmGatewayProvider: RealmGateway {
   
   //MARK: - Save
   
-  func saveObject<T: Object>(_ object: T, completion: (() -> Void)?) {
+  func saveObject<T: Object>(_ object: T, completion: (() -> Void)?) where T: ThreadSaveable {
     handleInBackground(block: { [weak self] realm in
       guard let `self` = self else { return }
       self.save(in: realm, object: object)
       }, completion: completion)
   }
   
-  func saveObjects<T: Object>(_ objects: [T], completion: (() -> Void)?) {
+  func saveObjects<T: Object>(_ objects: [T], completion: (() -> Void)?) where T: ThreadSaveable {
     handleInBackground(block: { [weak self] realm in
       guard let `self` = self else { return }
       for object in objects {
@@ -45,33 +45,9 @@ final class RealmGatewayProvider: RealmGateway {
   
   //MARK: - Private
   
-  private func save<T: Object>(in realm: Realm, object: T) {
-    
-    guard let threadSaveableObject = object as? ThreadSaveable else {
-      fatalError()
-    }
-    
-    guard let newObject = threadSaveableObject.threadSaveObject(object: object) as? Object else {
-      fatalError()
-    }
-    
+  private func save<T: Object>(in realm: Realm, object: T) where T: ThreadSaveable {
+    let newObject = object.threadSaveObject()
     realm.add(newObject, update: true)
-
-//    if let newThreadSaveObject = getThreadSaveObject(object) as? Object {
-//      realm.add(newThreadSaveObject, update: true)
-//    }
-    
-    //    guard let identifiable = object as? RealmIdentifiable else { return }
-    //    let identifier = identifiable.identifier
-    //
-    //
-    //    if let threadSaveObject = realm.object(ofType: T.self, forPrimaryKey: identifier) {
-    //      realm.add(threadSaveObject, update: true)
-    //    } else {
-    //      if let newThreadSaveObject = getThreadSaveObject(object) as? Object {
-    //        realm.add(newThreadSaveObject, update: true)
-    //      }
-    //    }
   }
   
   private func handleInBackground(block: @escaping (Realm) -> Void, completion: (() -> Void)?) {
