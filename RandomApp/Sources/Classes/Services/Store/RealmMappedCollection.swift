@@ -50,14 +50,15 @@ class RealmMappedCollection<Element: Object, Transformed> {
   }
 
   private func handle(deletions: [Int]) {
-    for index in deletions where index < transformedCache.count {
+    for index in deletions.reversed() where index < transformedCache.count {
       transformedCache.remove(at: index)
     }
+    print(transformedCache.count)
   }
 
   private func handle(insertions: [Int]) {
     var count = transformedCache.count
-    insertions.forEach { index in
+    insertions.reversed().forEach { index in
       if index < count {
         transformedCache.insert(transform(results[index]), at: index)
         count += 1
@@ -76,6 +77,10 @@ class RealmMappedCollection<Element: Object, Transformed> {
 
   var count: Int {
     return results.count
+  }
+  
+  var items: [Element] {
+    return Array(results)
   }
 
   func item(at index: Int) -> Transformed {

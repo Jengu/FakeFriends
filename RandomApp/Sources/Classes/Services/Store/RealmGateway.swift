@@ -22,7 +22,10 @@ protocol RealmGateway {
   
   //MARK: - Methods
   
-  func save<T: Object>(_ object: T, completion: (() -> Void)?) where T: ThreadSaveable
-  func save<T: Object>(_ objects: [T], completion: (() -> Void)?) where T: ThreadSaveable
+  func save(_ object: Object, completion: (() -> Void)?)
+  func save(_ objects: [Object], completion: (() -> Void)?)
+  
+  func delete(_ object: Object, completion: (() -> Void)?)
+  func delete(_ objects: [Object], completion: (() -> Void)?)
   
 }

@@ -28,6 +28,6 @@ protocol FriendDetailsViewModel {
   
   //MARK: - Methods
   
-  func save(new nickname: String?)
+  func save(nickname: String?)
   
 }

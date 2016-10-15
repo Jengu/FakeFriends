@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol FriendDetailsDefaultViewModelDelegate: class {
+  func friendDetailsViewModel(_ viewModel: FriendDetailsViewModel, didSave friend: Friend)
+}
+
 final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   
   //MARK: - Properties
+  
+  weak var delegate: FriendDetailsDefaultViewModelDelegate?
   
   private let imageCache: ImageCache
   private let realmGateway: RealmGateway
@@ -45,7 +51,7 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   //MARK: - Init
   
   init(friend: Friend, imageCache: ImageCache, realmGateway: RealmGateway) {
-    self.friend = Friend(value: friend)
+    self.friend = friend
     self.imageCache = imageCache
     self.realmGateway = realmGateway
   }
@@ -69,9 +75,11 @@ final class FriendDetailsDefaultViewModel: FriendDetailsViewModel {
   
   //MARK: - Save
   
-  func save(new nickname: String?) {
-    friend.nickname = nickname
-    self.realmGateway.save(friend, completion: nil)
+  func save(nickname: String?) {
+    let threadSaveFriend = Friend(value: friend)
+    threadSaveFriend.nickname = nickname
+    self.realmGateway.save(threadSaveFriend, completion: nil)
+    delegate?.friendDetailsViewModel(self, didSave: friend)
   }
   
 }

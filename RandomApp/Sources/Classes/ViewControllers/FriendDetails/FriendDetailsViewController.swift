@@ -41,9 +41,9 @@ class FriendDetailsViewController: UIViewController {
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    viewModel.save(new: nicknameTextField.text)
+    view.endEditing(true)
   }
-  
+    
   //MARK: - Configure
   
   private func configureView() {
@@ -139,6 +139,13 @@ class FriendDetailsViewController: UIViewController {
   
   @objc private func handleTap(tapGR: UITapGestureRecognizer) {
     view.endEditing(true)
+  }
+  
+  //MARK: - Save
+  
+  func save() {
+    let nickname = nicknameTextField.text
+    viewModel.save(nickname: nickname)
   }
   
 }

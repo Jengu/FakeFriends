@@ -37,11 +37,11 @@ final class FriendsListCoordinator: BaseCoordinating {
     viewModel.delegate = self
     let viewController = FriendsListViewController(viewModel: viewModel)
     
-    let reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh,
+    let reloadButton = UIBarButtonItem(barButtonSystemItem: .refresh,
                                         target: viewController,
                                         action: #selector(viewController.reloadData))
     viewController.navigationItem.leftBarButtonItem = reloadButton
-    viewController.navigationItem.title = "FRIENDS"
+    viewController.navigationItem.title = "Friends"
     
     show(viewController: viewController, animated: false)
   }
@@ -49,7 +49,15 @@ final class FriendsListCoordinator: BaseCoordinating {
   fileprivate func showFriendDetailsViewController(with friend: Friend) {
     let viewModel = FriendDetailsDefaultViewModel(friend: friend, imageCache: ServicesFactory.imageCache(),
                                                   realmGateway: realmGateway)
+    viewModel.delegate = self
     let viewController = FriendDetailsViewController(viewModel: viewModel)
+    
+    let saveButton = UIBarButtonItem(barButtonSystemItem: .save,
+                                       target: viewController,
+                                       action: #selector(viewController.save))
+    viewController.navigationItem.rightBarButtonItem = saveButton
+    viewController.navigationItem.title = viewModel.username
+
     show(viewController: viewController, animated: true)
   }
   
@@ -68,6 +76,16 @@ extension FriendsListCoordinator: FriendsListViewModelDelegate {
   
   func friendListViewModel(viewModel: FriendsListViewModel, didSelect friend: Friend) {
     showFriendDetailsViewController(with: friend)
+  }
+  
+}
+
+extension FriendsListCoordinator: FriendDetailsDefaultViewModelDelegate {
+  
+  func friendDetailsViewModel(_ viewModel: FriendDetailsViewModel, didSave friend: Friend) {
+    if let navigationController = rootViewController as? UINavigationController {
+      navigationController.popViewController(animated: true)
+    }
   }
   
 }

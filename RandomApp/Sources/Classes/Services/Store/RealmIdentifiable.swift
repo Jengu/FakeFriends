@@ -9,6 +9,9 @@
 import Foundation
 
 protocol RealmIdentifiable {
+  
   var identifier: Int { get set }
+  
   static func primaryKey() -> String?
+  
 }

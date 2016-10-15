@@ -59,6 +59,13 @@ final class FriendsListDefaultViewModel: FriendsListViewModel {
   //MARK: - Reload
   
   func reloadData(completion: ((Error?) -> Void)?) {
+    self.realmGateway.delete(cellViewModels.items) { [weak self] in
+      guard let `self` = self else { return }
+      self.getRandomFriends(completion: completion)
+    }
+  }
+  
+  private func getRandomFriends(completion: ((Error?) -> Void)?) {
     apiProvider.getRandomFriends(success: { [weak self] (friends) in
       guard let `self` = self else { return }
       self.realmGateway.save(friends, completion: nil)

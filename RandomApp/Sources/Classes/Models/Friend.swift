@@ -10,10 +10,6 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-protocol ThreadSaveable: class {
-  func threadSaveObject() -> Object
-}
-
 class Friend: Object, Mappable, RealmIdentifiable {
   
   //MARK: - Properties
@@ -46,10 +42,4 @@ class Friend: Object, Mappable, RealmIdentifiable {
     phoneNumber <- map["phone"]
   }
   
-}
-
-extension Friend: ThreadSaveable {
-  func threadSaveObject() -> Object {
-   return Friend(value: self)
-  }
 }

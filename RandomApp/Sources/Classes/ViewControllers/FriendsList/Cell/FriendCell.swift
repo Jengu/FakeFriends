@@ -26,6 +26,8 @@ class FriendCell: UITableViewCell, UniqueCell {
   }
 
   private func clear() {
+    viewModel?.didUpdate = nil
+    viewModel = nil
     usernameLabel.text = ""
     avatarImageView.image = nil
   }

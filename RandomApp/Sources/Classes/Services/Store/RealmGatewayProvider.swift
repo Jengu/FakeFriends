@@ -27,28 +27,52 @@ final class RealmGatewayProvider: RealmGateway {
   
   //MARK: - Save
   
-  func save<T: Object>(_ object: T, completion: (() -> Void)?) where T: ThreadSaveable {
-    handleInBackground(block: { [weak self] realm in
-      guard let `self` = self else { return }
-      self.save(in: realm, object: object)
+  func save(_ object: Object, completion: (() -> Void)?) {
+    handleInBackground(block: { realm in
+      realm.add(object, update: true)
       }, completion: completion)
   }
   
-  func save<T: Object>(_ objects: [T], completion: (() -> Void)?) where T: ThreadSaveable {
-    handleInBackground(block: { [weak self] realm in
-      guard let `self` = self else { return }
-      for object in objects {
-        self.save(in: realm, object: object)
+  func save(_ objects: [Object], completion: (() -> Void)?) {
+    handleInBackground(block: { realm in
+      realm.add(objects)
+      }, completion: completion)
+  }
+  
+  //MARK: - Delete
+  
+  func delete(_ object: Object, completion: (() -> Void)?) {
+    let identifier = self.identifier(of: object)
+    
+    handleInBackground(block: { realm in
+      if let deletingObject = realm.object(ofType: type(of: object), forPrimaryKey: identifier) {
+        realm.delete(deletingObject)
       }
       }, completion: completion)
   }
   
-  //MARK: - Private
-  
-  private func save<T: Object>(in realm: Realm, object: T) where T: ThreadSaveable {
-    let threadSaveObject = object.threadSaveObject()
-    realm.add(threadSaveObject, update: true)
+  func delete(_ objects: [Object], completion: (() -> Void)?) {
+    var deletingObjectIdentifiers: [Int] = []
+    objects.forEach({ (object) in
+      deletingObjectIdentifiers.append(self.identifier(of: object))
+    })
+
+    handleInBackground(block: { realm in
+      guard let firstObject = objects.first else { return }
+      let predicate = NSPredicate(format: "identifier IN %@", deletingObjectIdentifiers)
+      let deletingObjects = realm.objects(type(of: firstObject)).filter(predicate)
+      realm.delete(deletingObjects)
+      }, completion: completion)
   }
+  
+  private func identifier(of object: Object) -> Int {
+    guard let identifiableObject = object as? RealmIdentifiable else {
+      fatalError("Object should be RealmIdentifiable")
+    }
+    return identifiableObject.identifier
+  }
+
+  //MARK: - Private
   
   private func handleInBackground(block: @escaping (Realm) -> Void, completion: (() -> Void)?) {
     Dispatch.performInBackground { [weak self] in
