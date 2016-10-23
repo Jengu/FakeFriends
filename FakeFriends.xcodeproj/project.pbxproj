@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C137DD5A0E6DD962DCAA72DB /* Pods_RandomAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD8DF91FE162490C0B7AEF5 /* Pods_RandomAppTests.framework */; };
-		F480E4B72578C225FDA5B2C9 /* Pods_RandomApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DDA48069A91BBA50DF25EB /* Pods_RandomApp.framework */; };
+		6B0C3181D4633AE2EFE632AE /* Pods_FakeFriendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E0469F379313BC88662810 /* Pods_FakeFriendsTests.framework */; };
+		79FC41CC0064C95BFABCF2EA /* Pods_FakeFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC6537C7EA43A91E3938B47 /* Pods_FakeFriends.framework */; };
 		FF2B27A41D91980000C552F3 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27A31D91980000C552F3 /* FriendCell.swift */; };
 		FF2B27A61D91982800C552F3 /* CellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27A51D91982800C552F3 /* CellRepresentable.swift */; };
 		FF2B27A81D91986300C552F3 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2B27A71D91986300C552F3 /* CellIdentifiable.swift */; };
@@ -63,12 +63,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20DDA48069A91BBA50DF25EB /* Pods_RandomApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CC8DFCE75EC9CECDA37B27D /* Pods-RandomAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomAppTests/Pods-RandomAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		47B6E67E5B90A4D9681BE792 /* Pods-RandomApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomApp/Pods-RandomApp.release.xcconfig"; sourceTree = "<group>"; };
-		5DD8DF91FE162490C0B7AEF5 /* Pods_RandomAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C101055E078B50F3AA494C9 /* Pods-RandomAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomAppTests/Pods-RandomAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D6055EF0F663E9EF0D866C12 /* Pods-RandomApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomApp/Pods-RandomApp.debug.xcconfig"; sourceTree = "<group>"; };
+		06E0469F379313BC88662810 /* Pods_FakeFriendsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FakeFriendsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC6537C7EA43A91E3938B47 /* Pods_FakeFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FakeFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8B4A87CBD1B3CF65B66CC37 /* Pods-FakeFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FakeFriends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FakeFriends/Pods-FakeFriends.debug.xcconfig"; sourceTree = "<group>"; };
+		B9CB9CB26CEE3774CB8FB2B4 /* Pods-FakeFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FakeFriendsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FakeFriendsTests/Pods-FakeFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DDC0045D546AA7E3AEDC1660 /* Pods-FakeFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FakeFriends.release.xcconfig"; path = "Pods/Target Support Files/Pods-FakeFriends/Pods-FakeFriends.release.xcconfig"; sourceTree = "<group>"; };
+		F39C9C623B957F09EF4811C9 /* Pods-FakeFriendsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FakeFriendsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FakeFriendsTests/Pods-FakeFriendsTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF2B27A31D91980000C552F3 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		FF2B27A51D91982800C552F3 /* CellRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRepresentable.swift; sourceTree = "<group>"; };
 		FF2B27A71D91986300C552F3 /* CellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 		FF2B27B61D927D9200C552F3 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 		FF2B27B91D927EC100C552F3 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		FF2B27BD1D9284A100C552F3 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		FF4DB6321D8C0D3D00424759 /* RandomApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF4DB6461D8C0D3D00424759 /* RandomAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4DB6321D8C0D3D00424759 /* FakeFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FakeFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4DB6461D8C0D3D00424759 /* FakeFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FakeFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4DB64A1D8C0D3D00424759 /* RandomAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAppTests.swift; sourceTree = "<group>"; };
 		FF4DB64C1D8C0D3D00424759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF4DB6731D8C0FF200424759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F480E4B72578C225FDA5B2C9 /* Pods_RandomApp.framework in Frameworks */,
+				79FC41CC0064C95BFABCF2EA /* Pods_FakeFriends.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,29 +129,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C137DD5A0E6DD962DCAA72DB /* Pods_RandomAppTests.framework in Frameworks */,
+				6B0C3181D4633AE2EFE632AE /* Pods_FakeFriendsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		62052A39A9F9DC3574400022 /* Frameworks */ = {
+		7405CBE6EBB4720D5C4D374F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				20DDA48069A91BBA50DF25EB /* Pods_RandomApp.framework */,
-				5DD8DF91FE162490C0B7AEF5 /* Pods_RandomAppTests.framework */,
+				5DC6537C7EA43A91E3938B47 /* Pods_FakeFriends.framework */,
+				06E0469F379313BC88662810 /* Pods_FakeFriendsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C0FC121F714C674CAEB98CFC /* Pods */ = {
+		C3D5D7316A30EECF1FF5D799 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D6055EF0F663E9EF0D866C12 /* Pods-RandomApp.debug.xcconfig */,
-				47B6E67E5B90A4D9681BE792 /* Pods-RandomApp.release.xcconfig */,
-				9C101055E078B50F3AA494C9 /* Pods-RandomAppTests.debug.xcconfig */,
-				2CC8DFCE75EC9CECDA37B27D /* Pods-RandomAppTests.release.xcconfig */,
+				A8B4A87CBD1B3CF65B66CC37 /* Pods-FakeFriends.debug.xcconfig */,
+				DDC0045D546AA7E3AEDC1660 /* Pods-FakeFriends.release.xcconfig */,
+				B9CB9CB26CEE3774CB8FB2B4 /* Pods-FakeFriendsTests.debug.xcconfig */,
+				F39C9C623B957F09EF4811C9 /* Pods-FakeFriendsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -179,40 +179,40 @@
 		FF4DB6291D8C0D3D00424759 = {
 			isa = PBXGroup;
 			children = (
-				FF4DB6341D8C0D3D00424759 /* RandomApp */,
-				FF4DB6821D8C0FF200424759 /* Supporting Files */,
-				FF4DB6721D8C0FF200424759 /* Resources */,
-				FF4DB6491D8C0D3D00424759 /* RandomAppTests */,
+				FF4DB6341D8C0D3D00424759 /* FakeFriends */,
+				FF4DB6491D8C0D3D00424759 /* FakeFriendsTests */,
 				FF4DB6331D8C0D3D00424759 /* Products */,
-				C0FC121F714C674CAEB98CFC /* Pods */,
-				62052A39A9F9DC3574400022 /* Frameworks */,
+				C3D5D7316A30EECF1FF5D799 /* Pods */,
+				7405CBE6EBB4720D5C4D374F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		FF4DB6331D8C0D3D00424759 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF4DB6321D8C0D3D00424759 /* RandomApp.app */,
-				FF4DB6461D8C0D3D00424759 /* RandomAppTests.xctest */,
+				FF4DB6321D8C0D3D00424759 /* FakeFriends.app */,
+				FF4DB6461D8C0D3D00424759 /* FakeFriendsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FF4DB6341D8C0D3D00424759 /* RandomApp */ = {
+		FF4DB6341D8C0D3D00424759 /* FakeFriends */ = {
 			isa = PBXGroup;
 			children = (
+				FF4DB6721D8C0FF200424759 /* Resources */,
+				FF4DB6821D8C0FF200424759 /* Supporting Files */,
 				FF784BE21D910EA800C90DA6 /* Sources */,
 			);
-			path = RandomApp;
+			path = FakeFriends;
 			sourceTree = "<group>";
 		};
-		FF4DB6491D8C0D3D00424759 /* RandomAppTests */ = {
+		FF4DB6491D8C0D3D00424759 /* FakeFriendsTests */ = {
 			isa = PBXGroup;
 			children = (
 				FF4DB64A1D8C0D3D00424759 /* RandomAppTests.swift */,
 				FF4DB64C1D8C0D3D00424759 /* Info.plist */,
 			);
-			path = RandomAppTests;
+			path = FakeFriendsTests;
 			sourceTree = "<group>";
 		};
 		FF4DB6721D8C0FF200424759 /* Resources */ = {
@@ -220,8 +220,7 @@
 			children = (
 				FF4DB6731D8C0FF200424759 /* Assets.xcassets */,
 			);
-			name = Resources;
-			path = RandomApp/Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FF4DB6821D8C0FF200424759 /* Supporting Files */ = {
@@ -229,8 +228,7 @@
 			children = (
 				FF4DB6831D8C0FF200424759 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			path = "RandomApp/Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		FF7408611D93D08C00DD2E1E /* ImageCache */ = {
@@ -414,9 +412,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF4DB6311D8C0D3D00424759 /* RandomApp */ = {
+		FF4DB6311D8C0D3D00424759 /* FakeFriends */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF4DB64F1D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "RandomApp" */;
+			buildConfigurationList = FF4DB64F1D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "FakeFriends" */;
 			buildPhases = (
 				8FCC9FA56E8D68D5B7882D95 /* [CP] Check Pods Manifest.lock */,
 				FF4DB62E1D8C0D3D00424759 /* Sources */,
@@ -430,14 +428,14 @@
 			);
 			dependencies = (
 			);
-			name = RandomApp;
+			name = FakeFriends;
 			productName = RandomApp;
-			productReference = FF4DB6321D8C0D3D00424759 /* RandomApp.app */;
+			productReference = FF4DB6321D8C0D3D00424759 /* FakeFriends.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FF4DB6451D8C0D3D00424759 /* RandomAppTests */ = {
+		FF4DB6451D8C0D3D00424759 /* FakeFriendsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF4DB6521D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "RandomAppTests" */;
+			buildConfigurationList = FF4DB6521D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "FakeFriendsTests" */;
 			buildPhases = (
 				42C286175FB808493F68BFBE /* [CP] Check Pods Manifest.lock */,
 				FF4DB6421D8C0D3D00424759 /* Sources */,
@@ -451,9 +449,9 @@
 			dependencies = (
 				FF4DB6481D8C0D3D00424759 /* PBXTargetDependency */,
 			);
-			name = RandomAppTests;
+			name = FakeFriendsTests;
 			productName = RandomAppTests;
-			productReference = FF4DB6461D8C0D3D00424759 /* RandomAppTests.xctest */;
+			productReference = FF4DB6461D8C0D3D00424759 /* FakeFriendsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -480,7 +478,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF4DB62D1D8C0D3D00424759 /* Build configuration list for PBXProject "RandomApp" */;
+			buildConfigurationList = FF4DB62D1D8C0D3D00424759 /* Build configuration list for PBXProject "FakeFriends" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -493,8 +491,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF4DB6311D8C0D3D00424759 /* RandomApp */,
-				FF4DB6451D8C0D3D00424759 /* RandomAppTests */,
+				FF4DB6311D8C0D3D00424759 /* FakeFriends */,
+				FF4DB6451D8C0D3D00424759 /* FakeFriendsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -547,7 +545,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RandomAppTests/Pods-RandomAppTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FakeFriendsTests/Pods-FakeFriendsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		80C8396DA9315261D8DBA26D /* [CP] Embed Pods Frameworks */ = {
@@ -562,7 +560,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RandomAppTests/Pods-RandomAppTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FakeFriendsTests/Pods-FakeFriendsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8FCC9FA56E8D68D5B7882D95 /* [CP] Check Pods Manifest.lock */ = {
@@ -592,7 +590,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RandomApp/Pods-RandomApp-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FakeFriends/Pods-FakeFriends-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E55414519B48EE47B6AF0253 /* [CP] Embed Pods Frameworks */ = {
@@ -607,7 +605,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RandomApp/Pods-RandomApp-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FakeFriends/Pods-FakeFriends-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF4DB6551D8C0DC300424759 /* Swiftlint */ = {
@@ -684,7 +682,7 @@
 /* Begin PBXTargetDependency section */
 		FF4DB6481D8C0D3D00424759 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF4DB6311D8C0D3D00424759 /* RandomApp */;
+			target = FF4DB6311D8C0D3D00424759 /* FakeFriends */;
 			targetProxy = FF4DB6471D8C0D3D00424759 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -783,12 +781,12 @@
 		};
 		FF4DB6501D8C0D3D00424759 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6055EF0F663E9EF0D866C12 /* Pods-RandomApp.debug.xcconfig */;
+			baseConfigurationReference = A8B4A87CBD1B3CF65B66CC37 /* Pods-FakeFriends.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = H396YQCF4V;
-				INFOPLIST_FILE = "RandomApp/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "FakeFriends/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = onthemoon.RandomApp;
@@ -800,12 +798,12 @@
 		};
 		FF4DB6511D8C0D3D00424759 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47B6E67E5B90A4D9681BE792 /* Pods-RandomApp.release.xcconfig */;
+			baseConfigurationReference = DDC0045D546AA7E3AEDC1660 /* Pods-FakeFriends.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = H396YQCF4V;
-				INFOPLIST_FILE = "RandomApp/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "FakeFriends/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = onthemoon.RandomApp;
@@ -816,7 +814,7 @@
 		};
 		FF4DB6531D8C0D3D00424759 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C101055E078B50F3AA494C9 /* Pods-RandomAppTests.debug.xcconfig */;
+			baseConfigurationReference = B9CB9CB26CEE3774CB8FB2B4 /* Pods-FakeFriendsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -826,13 +824,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = onthemoon.RandomAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RandomApp.app/RandomApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FakeFriends.app/FakeFriends";
 			};
 			name = Debug;
 		};
 		FF4DB6541D8C0D3D00424759 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CC8DFCE75EC9CECDA37B27D /* Pods-RandomAppTests.release.xcconfig */;
+			baseConfigurationReference = F39C9C623B957F09EF4811C9 /* Pods-FakeFriendsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -842,14 +840,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = onthemoon.RandomAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RandomApp.app/RandomApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FakeFriends.app/FakeFriends";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF4DB62D1D8C0D3D00424759 /* Build configuration list for PBXProject "RandomApp" */ = {
+		FF4DB62D1D8C0D3D00424759 /* Build configuration list for PBXProject "FakeFriends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF4DB64D1D8C0D3D00424759 /* Debug */,
@@ -858,7 +856,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4DB64F1D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "RandomApp" */ = {
+		FF4DB64F1D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "FakeFriends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF4DB6501D8C0D3D00424759 /* Debug */,
@@ -867,7 +865,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4DB6521D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "RandomAppTests" */ = {
+		FF4DB6521D8C0D3D00424759 /* Build configuration list for PBXNativeTarget "FakeFriendsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF4DB6531D8C0D3D00424759 /* Debug */,
