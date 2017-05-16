@@ -10,9 +10,7 @@ import Foundation
 import RealmSwift
 
 final class RealmGatewayProvider: RealmGateway {
-  
-  typealias GetThreadSaveObject<ThreadSaveObject: Object> = (Object) -> ThreadSaveObject
-  
+    
   //MARK: - Properties
   
   let defaultRealm: Realm
